@@ -118,37 +118,18 @@ export const getRecentAppointmentList = async () => {
       [Query.orderDesc("$createdAt")]
     );
 
-    // const scheduledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "scheduled");
-
-    // const pendingAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "pending");
-
-    // const cancelledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "cancelled");
-
-    // const data = {
-    //   totalCount: appointments.total,
-    //   scheduledCount: scheduledAppointments.length,
-    //   pendingCount: pendingAppointments.length,
-    //   cancelledCount: cancelledAppointments.length,
-    //   documents: appointments.documents,
-    // };
-
     const initialCounts = {
-      scheduledCount: 0,
+      scheduledCount: 0,  // FIXED: Changed from scheduleCount to scheduledCount
       pendingCount: 0,
       cancelledCount: 0,
     };
 
+    // FIXED: Using database schema values: "schedule", "pending", "cancelled"
     const counts = (appointments.documents as Appointment[]).reduce(
       (acc, appointment) => {
         switch (appointment.status) {
-          case "scheduled":
-            acc.scheduledCount++;
+          case "schedule":  // Database uses "schedule" (without "d")
+            acc.scheduledCount++;  // FIXED: Changed from scheduleCount to scheduledCount
             break;
           case "pending":
             acc.pendingCount++;

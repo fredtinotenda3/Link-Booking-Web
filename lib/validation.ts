@@ -76,8 +76,10 @@ export const PatientFormValidation = z.object({
     }),
 });
 
+// UPDATED: Added branchId, made primaryPhysician optional
 export const CreateAppointmentSchema = z.object({
-  primaryPhysician: z.string().min(2, "Select at least one doctor"),
+  branchId: z.string().min(1, "Please select a branch"), // NEW
+  primaryPhysician: z.string().optional(), // Made optional
   schedule: z.coerce.date(),
   reason: z
     .string()
@@ -87,16 +89,20 @@ export const CreateAppointmentSchema = z.object({
   cancellationReason: z.string().optional(),
 });
 
+// UPDATED: Added branchId, made primaryPhysician optional
 export const ScheduleAppointmentSchema = z.object({
-  primaryPhysician: z.string().min(2, "Select at least one doctor"),
+  branchId: z.string().min(1, "Please select a branch"), // NEW
+  primaryPhysician: z.string().optional(), // Made optional
   schedule: z.coerce.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
   cancellationReason: z.string().optional(),
 });
 
+// UPDATED: Added branchId, made primaryPhysician optional
 export const CancelAppointmentSchema = z.object({
-  primaryPhysician: z.string().min(2, "Select at least one doctor"),
+  branchId: z.string().min(1, "Please select a branch"), // NEW
+  primaryPhysician: z.string().optional(), // Made optional
   schedule: z.coerce.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
@@ -122,3 +128,31 @@ export const AppointmentFormValidation = z.union([
   ScheduleAppointmentSchema,
   CancelAppointmentSchema,
 ]);
+
+// NEW: Simplified booking schema for Link Opticians
+export const SimpleBookingSchema = z.object({
+  branchId: z.string().min(1, "Please select a branch"),
+  schedule: z.coerce.date(),
+  patientName: z.string().min(2, "Name must be at least 2 characters"),
+  patientEmail: z.string().email("Invalid email address"),
+  patientPhone: z
+    .string()
+    .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
+  reason: z
+    .string()
+    .min(2, "Reason must be at least 2 characters")
+    .max(200, "Reason must be at most 200 characters")
+    .optional(),
+});
+
+// NEW: Branch schema validation
+export const BranchSchema = z.object({
+  name: z.string().min(2, "Branch name must be at least 2 characters"),
+  address: z.string().min(5, "Address must be at least 5 characters"),
+  phone: z.string().min(5, "Phone must be at least 5 characters"),
+  email: z.string().email("Invalid email address"),
+  operatingHours: z.string().min(5, "Operating hours must be provided"),
+  service: z.array(z.string()).min(1, "At least one service must be provided"),
+  doctors: z.array(z.string()).optional(),
+  isActive: z.boolean().default(true),
+});

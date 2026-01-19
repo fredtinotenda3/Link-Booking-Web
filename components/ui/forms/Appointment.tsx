@@ -8,7 +8,6 @@ import { getAppointmentSchema } from "@/lib/validation";
 import { Status } from "@/types";
 import { Appointment } from "@/types/appwite.types";
 import { zodResolver } from "@hookform/resolvers/zod";
-//import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,19 +19,22 @@ import { SelectItem } from "../select";
 import Image from "next/image";
 import SubmitButton from "@/components/SubmitButton";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export const AppointmentForm = ({
-  userId,
   patientId,
   type,
   appointment,
   setOpen,
+  setIsSubmitting,
+  branches = [],
 }: {
-  userId: string;
   patientId: string;
   type: "create" | "schedule" | "cancel";
   appointment?: Appointment;
-  setOpen?: Dispatch<SetStateAction<boolean>>;
+  setOpen?: () => void;
+  setIsSubmitting?: Dispatch<SetStateAction<boolean>>;
+  branches?: any[];
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -44,11 +46,12 @@ export const AppointmentForm = ({
     defaultValues: {
       primaryPhysician: appointment ? appointment?.primaryPhysician : "",
       schedule: appointment
-        ? new Date(appointment?.schedule!)
+        ? new Date(appointment?.schedule)
         : new Date(Date.now()),
       reason: appointment ? appointment.reason : "",
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
+      branchId: appointment?.branchId || "",
     },
   });
 
@@ -56,11 +59,12 @@ export const AppointmentForm = ({
     values: z.infer<typeof AppointmentFormValidation>
   ) => {
     setIsLoading(true);
+    if (setIsSubmitting) setIsSubmitting(true);
 
-    let status;
+    let status: Status;
     switch (type) {
       case "schedule":
-        status = "scheduled";
+        status = "schedule"; 
         break;
       case "cancel":
         status = "cancelled";
@@ -71,33 +75,35 @@ export const AppointmentForm = ({
 
     try {
       if (type === "create" && patientId) {
-        const appointment = {
-          userId,
+        const appointmentData = {
+          userId: "",
           patient: patientId,
           primaryPhysician: values.primaryPhysician,
           schedule: new Date(values.schedule),
           reason: values.reason!,
-          status: status as Status,
+          status: status,
           note: values.note,
+          branchId: values.branchId,
         };
 
-        const newAppointment = await createAppointment(appointment);
+        const newAppointment = await createAppointment(appointmentData);
 
         if (newAppointment) {
           form.reset();
+          if (setOpen) setOpen();
           router.push(
-            `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`
+            `/patients/${patientId}/new-appointment/success?appointmentId=${newAppointment.$id}`
           );
         }
       } else {
         const appointmentToUpdate = {
-          userId,
           appointmentId: appointment?.$id!,
           appointment: {
-            primaryPhysician: values.primaryPhysician,
+            primaryPhysician: values.primaryPhysician || appointment?.primaryPhysician || "",
             schedule: new Date(values.schedule),
-            status: status as Status,
+            status: status,
             cancellationReason: values.cancellationReason,
+            branchId: appointment?.branchId || values.branchId || "",
           },
           type,
         };
@@ -105,14 +111,26 @@ export const AppointmentForm = ({
         const updatedAppointment = await updateAppointment(appointmentToUpdate);
 
         if (updatedAppointment) {
-          setOpen && setOpen(false);
           form.reset();
+          if (setOpen) {
+            setOpen();
+          }
+          toast(
+            type === "schedule" 
+              ? "Appointment scheduled." 
+              : "Appointment cancelled."
+          );
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error:", error);
+      toast(
+        `Appointment ${type} was not completed.`
+      );
+    } finally {
+      setIsLoading(false);
+      if (setIsSubmitting) setIsSubmitting(false);
     }
-    setIsLoading(false);
   };
 
   let buttonLabel;
@@ -124,7 +142,7 @@ export const AppointmentForm = ({
       buttonLabel = "Schedule Appointment";
       break;
     default:
-      buttonLabel = "Submit Apppointment";
+      buttonLabel = "Submit Appointment";
   }
 
   return (
@@ -134,7 +152,7 @@ export const AppointmentForm = ({
           <section className="mb-12 space-y-4">
             <h1 className="header">New Appointment</h1>
             <p className="text-dark-700">
-              Request a new appointment in 10 seconds.
+              Schedule a new appointment.
             </p>
           </section>
         )}
@@ -144,9 +162,22 @@ export const AppointmentForm = ({
             <CustomFormField
               fieldType={FormFieldType.SELECT}
               control={form.control}
+              name="branchId"
+              label="Clinic Location"
+              placeholder="Select clinic location"
+            >
+              {branches.map((branch) => (
+                <SelectItem key={branch.$id} value={branch.$id}>
+                  {branch.name} - {branch.address}
+                </SelectItem>
+              ))}
+            </CustomFormField>
+            <CustomFormField
+              fieldType={FormFieldType.SELECT}
+              control={form.control}
               name="primaryPhysician"
               label="Doctor"
-              placeholder="Select a doctor"
+              placeholder="Select doctor"
             >
               {Doctors.map((doctor, i) => (
                 <SelectItem key={doctor.name + i} value={doctor.name}>
@@ -168,7 +199,7 @@ export const AppointmentForm = ({
               fieldType={FormFieldType.DATE_PICKER}
               control={form.control}
               name="schedule"
-              label="Expected appointment date"
+              label="Appointment Date"
               showTimeSelect
               dateFormat="MM/dd/yyyy  -  h:mm aa"
             />
@@ -182,8 +213,8 @@ export const AppointmentForm = ({
                 fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
                 name="reason"
-                label="Appointment reason"
-                placeholder="Annual montly check-up"
+                label="Reason for Appointment"
+                placeholder="Annual eye examination"
                 disabled={type === "schedule"}
               />
 
@@ -191,8 +222,8 @@ export const AppointmentForm = ({
                 fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
                 name="note"
-                label="Comments/notes"
-                placeholder="Prefer afternoon appointments, if possible"
+                label="Additional Information"
+                placeholder="Appointment preferences"
                 disabled={type === "schedule"}
               />
             </div>
@@ -204,8 +235,8 @@ export const AppointmentForm = ({
             fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="cancellationReason"
-            label="Reason for cancellation"
-            placeholder="Urgent meeting came up"
+            label="Cancellation Reason"
+            placeholder="Reason for cancelling appointment"
           />
         )}
 

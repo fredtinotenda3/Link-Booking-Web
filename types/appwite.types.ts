@@ -27,9 +27,11 @@ export interface Patient extends Models.Document {
 
 export interface Appointment extends Models.Document {
   patient: Patient;
+  branchId: string; // ADD THIS
+  branchName?: string; // ADD THIS for enhanced data
   schedule: Date;
   status: Status;
-  primaryPhysician: string;
+  primaryPhysician: string; // Now optional in schema
   reason: string;
   note: string;
   userId: string;

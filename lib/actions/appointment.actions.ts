@@ -4,15 +4,16 @@ import { revalidatePath } from "next/cache";
 import { ID, Query } from "node-appwrite";
 
 import { Appointment } from "@/types/appwite.types";
+import { sendSMS } from '@/lib/twilio';
 
 import {
   APPOINTMENT_COLLECTION_ID,
   DATABASE_ID,
   databases,
-  messaging,
 } from "../appwrite.config";
 import { formatDateTime, parseStringify } from "../utils";
 import CreateAppointmentParams, { UpdateAppointmentParams } from "@/types";
+import { getPatient } from "./patient.actions";
 
 //  CREATE APPOINTMENT
 export const createAppointment = async (
@@ -23,7 +24,10 @@ export const createAppointment = async (
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
       ID.unique(),
-      appointment
+      {
+        ...appointment,
+        branchId: appointment.branchId || "",
+      }
     );
 
     revalidatePath("/admin");
@@ -42,26 +46,6 @@ export const getRecentAppointmentList = async () => {
       [Query.orderDesc("$createdAt")]
     );
 
-    // const scheduledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "scheduled");
-
-    // const pendingAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "pending");
-
-    // const cancelledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "cancelled");
-
-    // const data = {
-    //   totalCount: appointments.total,
-    //   scheduledCount: scheduledAppointments.length,
-    //   pendingCount: pendingAppointments.length,
-    //   cancelledCount: cancelledAppointments.length,
-    //   documents: appointments.documents,
-    // };
-
     const initialCounts = {
       scheduledCount: 0,
       pendingCount: 0,
@@ -70,16 +54,6 @@ export const getRecentAppointmentList = async () => {
 
     const counts = (appointments.documents as Appointment[]).reduce(
       (acc, appointment) => {
-        // switch (appointment.status) {
-        //   case "scheduled":
-        //     acc.scheduledCount++;
-        //     break;
-        //   case "pending":
-        //     acc.pendingCount++;
-        //     break;
-        //   case "cancelled":
-        //     acc.cancelledCount++;
-        //     break;
         if (appointment.status === "schedule") {
           acc.scheduledCount += 1;
         } else if (appointment.status === "pending") {
@@ -108,18 +82,13 @@ export const getRecentAppointmentList = async () => {
 };
 
 //  SEND SMS NOTIFICATION
-export const sendSMSNotification = async (userId: string, content: string) => {
+export const sendSMSNotification = async (phoneNumber: string, content: string) => {
   try {
-    // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
-    const message = await messaging.createSms(
-      ID.unique(),
-      content,
-      [],
-      [userId]
-    );
-    return parseStringify(message);
+    const result = await sendSMS(phoneNumber, content);
+    return parseStringify(result);
   } catch (error) {
-    console.error("An error occurred while sending sms:", error);
+    console.error("An error occurred while sending SMS:", error);
+    return { success: false, error: "Failed to send SMS" };
   }
 };
 
@@ -141,59 +110,60 @@ export const getAppointment = async (appointmentId: string) => {
   }
 };
 
-//  UPDATE APPOINTMENT
+//  UPDATE APPOINTMENT - FIXED VERSION
 export const updateAppointment = async ({
   appointmentId,
-  userId,
-  //timeZone,
   appointment,
   type,
 }: UpdateAppointmentParams) => {
   try {
-    // Set the status based on the type
     let status: "schedule" | "pending" | "cancelled";
 
     switch (type) {
       case "schedule":
-        status = "schedule"; // Corrected value
+        status = "schedule";
         break;
       case "cancel":
-        status = "cancelled"; // Corrected value
+        status = "cancelled";
         break;
       default:
-        status = "pending"; // Default value
+        status = "pending";
     }
 
-    // Prepare the updated appointment object
     const updatedAppointment = await databases.updateDocument(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
       appointmentId,
       {
-        ...appointment, // Include other appointment details
-        status: status, // Ensure status is correctly set
+        ...appointment,
+        status: status,
       }
     );
 
-    // If update is successful, revalidate the path
     if (!updatedAppointment) {
       throw new Error("Appointment not found");
     }
 
-    const smsMessage = `Greetings from CarePulse. ${
+    const fullAppointment = await getAppointment(appointmentId);
+    
+    const patient = await getPatient(fullAppointment.patient.$id);
+    
+    const smsMessage = `Link Opticians appointment notification. ${
       type === "schedule"
-        ? `Your appointment is confirmed for ${
-            formatDateTime(appointment.schedule!).dateTime
-          } with Dr. ${appointment.primaryPhysician}`
-        : `We regret to inform that your appointment for ${
-            formatDateTime(appointment.schedule!).dateTime
-          } is cancelled. Reason:  ${appointment.cancellationReason}`
-    }.`;
-    await sendSMSNotification(userId, smsMessage);
+        ? `Appointment scheduled for ${formatDateTime(appointment.schedule!).dateTime}`
+        : `Appointment cancelled for ${formatDateTime(appointment.schedule!).dateTime}`
+    }`;
+
+    if (patient?.phone) {
+      await sendSMSNotification(patient.phone, smsMessage);
+    }
 
     revalidatePath("/admin");
+    revalidatePath("/");
+    
     return parseStringify(updatedAppointment);
   } catch (error) {
-    console.error("An error occurred while scheduling an appointment:", error);
+    console.error("An error occurred while updating an appointment:", error);
+    throw error;
   }
 };

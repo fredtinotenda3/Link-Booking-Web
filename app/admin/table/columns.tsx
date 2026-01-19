@@ -1,4 +1,3 @@
-//
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
@@ -49,6 +48,19 @@ export const columns: ColumnDef<Appointment>[] = [
       );
     },
   },
+  // Update the branch column to safely access branchName
+    {
+      accessorKey: "branchName",
+      header: "Branch",
+      cell: ({ row }) => {
+        const appointment = row.original as any; // Type cast needed
+        return (
+          <p className="text-14-regular">
+            {appointment.branchName || appointment.branchId || "No branch"}
+          </p>
+        );
+      },
+    },
   {
     accessorKey: "primaryPhysician",
     header: "Doctor",
@@ -62,13 +74,15 @@ export const columns: ColumnDef<Appointment>[] = [
       return (
         <div className="flex items-center gap-3">
           <Image
-            src={doctor?.image!}
+            src={doctor?.image}
             alt="doctor"
             width={100}
             height={100}
             className="size-8"
           />
-          <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
+          <p className="whitespace-nowrap">
+            {doctor ? `Dr. ${doctor.name}` : "Not assigned"}
+          </p>
         </div>
       );
     },
@@ -83,18 +97,14 @@ export const columns: ColumnDef<Appointment>[] = [
         <div className="flex gap-1">
           <AppointmentModal
             patientId={appointment.patient.$id}
-            userId={appointment.userId}
             appointment={appointment}
             type="schedule"
-            //title="Schedule Appointment"
             description="Please confirm the following details to schedule."
           />
           <AppointmentModal
             patientId={appointment.patient.$id}
-            userId={appointment.userId}
             appointment={appointment}
             type="cancel"
-            // title="Cancel Appointment"
             description="Are you sure you want to cancel your appointment?"
           />
         </div>

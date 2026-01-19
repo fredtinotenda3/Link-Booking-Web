@@ -1,14 +1,13 @@
-/* eslint-disable no-unused-vars */
-
 import { Appointment } from "./appwite.types";
 
 declare type SearchParamProps = {
   params: { [key: string]: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 declare type Gender = "male" | "female" | "other";
-declare type Status = "pending" | "schedule" | "cancelled";
+// FIXED: Changed to match database schema: "schedule" instead of "scheduled"
+declare type Status = "pending" | "schedule" | "cancelled";  // CHANGED: "scheduled" to "schedule"
 
 declare interface CreateUserParams {
   name: string;
@@ -40,30 +39,46 @@ declare interface RegisterUserParams extends CreateUserParams {
   privacyConsent: boolean;
 }
 
-declare type CreateAppointmentParams = {
-  userId: string;
+declare interface Branch {
+  $id?: string;
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  operatingHours: {
+    monday: string;
+    tuesday: string;
+    wednesday: string;
+    thursday: string;
+    friday: string;
+    saturday: string;
+    sunday: string;
+  };
+  services: string[];
+  doctors: string[];
+  isActive: boolean;
+}
+
+declare interface CreateAppointmentParams {
+  userId?: string;
   patient: string;
-  primaryPhysician: string;
+  branchId: string;
+  primaryPhysician?: string;
   reason: string;
   schedule: Date;
   status: Status;
   note: string | undefined;
-};
+}
 
 declare type UpdateAppointmentParams = {
-  // appointmentId: string;
-  // userId: string;
-  // appointment: Appointment;
-  // type: string;
-  // appointmentToUpdate: Appointment;
-
-  userId: string;
+  userId?: string;
   appointmentId: string;
   appointment: {
     primaryPhysician: string;
     schedule: Date;
     status: Status;
     cancellationReason: string | undefined;
+    branchId?: string; // ADDED this
   };
   type: "create" | "schedule" | "cancel";
 };

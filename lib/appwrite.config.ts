@@ -9,6 +9,7 @@ export const {
   DOCTOR_COLLECTION_ID,
   APPOINTMENT_COLLECTION_ID,
   NEXT_PUBLIC_BUCKET_ID: BUCKET_ID,
+  BRANCHES_COLLECTION_ID, // ADD THIS
 } = process.env;
 
 const client = new sdk.Client();
