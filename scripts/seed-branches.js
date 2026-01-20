@@ -25,7 +25,7 @@ if (!DATABASE_ID || !BRANCHES_COLLECTION_ID) {
 }
 
 /* -----------------------------
-   Seed Data
+   Seed Data - FIXED: doctors should be arrays
 -------------------------------- */
 const branches = [
   {
@@ -40,7 +40,7 @@ const branches = [
       "Contact Lenses",
       "Children's Eye Care"
     ],
-    doctors: "Dr. Sarah Johnson",
+    doctors: ["Dr. Sarah Johnson"], // Changed to array
     isActive: true
   },
   {
@@ -50,7 +50,7 @@ const branches = [
     email: "westgate@linkopticians.com",
     operatingHours: "9am-6pm, Sat 10am-4pm",
     service: ["Eye Tests", "Glasses", "Contact Lenses"],
-    doctors: "Dr. Emily Wilson",
+    doctors: ["Dr. Emily Wilson"], // Changed to array
     isActive: true
   },
   {
@@ -65,7 +65,7 @@ const branches = [
       "Contact Lenses",
       "Emergency Eye Care"
     ],
-    doctors: "Dr. Robert Kim",
+    doctors: ["Dr. Robert Kim"], // Changed to array
     isActive: true
   },
   {
@@ -80,7 +80,7 @@ const branches = [
       "Contact Lenses",
       "Senior Eye Care"
     ],
-    doctors: "Dr. James Miller",
+    doctors: ["Dr. James Miller"], // Changed to array
     isActive: true
   },
   {
@@ -95,7 +95,7 @@ const branches = [
       "Contact Lenses",
       "Sports Vision"
     ],
-    doctors: "Dr. Maria Garcia",
+    doctors: ["Dr. Maria Garcia"], // Changed to array
     isActive: true
   }
 ];
