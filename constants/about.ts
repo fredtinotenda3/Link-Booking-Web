@@ -88,20 +88,20 @@ export const ABOUT_DATA = {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: "sarah-johnson",
-    name: "Dr. Sarah Johnson",
+    id: "richard-maveneka",
+    name: "Dr. Richard Maveneka",
     role: "Lead Optometrist",
-    experience: "15+ years",
+    experience: "17+ years",
     specialty: "Pediatric Optometry & Myopia Control",
     image: "/assets/images/dr-sarah.jpg",
     bio: "Specializes in children's vision development and myopia progression management.",
     education: ["OD - New England College of Optometry", "Fellow of the American Academy of Optometry"]
   },
   {
-    id: "michael-chen",
-    name: "Dr. Michael Chen",
+    id: "taylor-mutaiwa",
+    name: "Dr. Taylor Mutaiwa",
     role: "Optometrist",
-    experience: "12+ years",
+    experience: "8+ years",
     specialty: "Dry Eye Treatment & Contact Lenses",
     image: "/assets/images/dr-chen.jpg",
     bio: "Expert in advanced dry eye therapies and complex contact lens fittings.",

@@ -201,7 +201,7 @@ export default function AboutPage() {
                 className="h-8 w-fit mb-4"
               />
               <p className="text-dark-600 text-sm">
-                Professional Eye Care Since 2003
+                Professional Eye Care Since 2008
               </p>
             </div>
             
@@ -216,7 +216,7 @@ export default function AboutPage() {
           
           <div className="mt-8 pt-8 border-t border-dark-500 text-center">
             <p className="text-dark-600 text-sm">
-              © 2024 Link Opticians. All rights reserved.
+              © 2026 Link Opticians. All rights reserved.
             </p>
           </div>
         </div>

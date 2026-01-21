@@ -30,9 +30,9 @@ export const CONTACT_DATA = {
     {
       id: "phone",
       title: "Phone",
-      details: "Main: +263 123 456 789\nEmergency: +263 987 654 321",
+      details: "Main: +263 123 456 789\nEmergency: +263 77 340 7464",
       icon: "/assets/icons/phone.svg",
-      action: { type: "tel", value: "+263123456789" }
+      action: { type: "tel", value: "757558/757990" }
     },
     {
       id: "email",
@@ -51,14 +51,14 @@ export const CONTACT_DATA = {
   
   map: {
     title: "Main Clinic Location",
-    address: "123 Eye Care Street, Harare, Zimbabwe",
+    address: "Shop 15 & 16  Robinson House, Cnr Angwa / K.Nkrumah, Harare, Zimbabwe",
     placeholder: "Interactive map showing clinic location",
     directionsUrl: "https://maps.google.com"
   },
   
   phone: {
     main: "+263 123 456 789",
-    emergency: "+263 987 654 321"
+    emergency: "+263 77 340 7464"
   },
   
   emergency: {
