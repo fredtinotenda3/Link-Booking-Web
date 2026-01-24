@@ -14,8 +14,32 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "Link Opticians",
-  description:
-    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+  description: "Optometry services at clinic locations. Eye examinations, contact lens services, and frame options available. Established in 2008.",
+  keywords: [
+    "optometry",
+    "eye care",
+    "eye examinations",
+    "contact lenses",
+    "prescription glasses",
+    "Harare",
+    "Chipinge",
+    "Chiredzi",
+    "Link Opticians"
+  ],
+  authors: [{ name: "Link Opticians" }],
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "en_ZW",
+    url: "https://linkopticians.co.zw",
+    title: "Link Opticians",
+    description: "Optometry services at clinic locations.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Link Opticians",
+    description: "Optometry services at clinic locations.",
+  },
   icons: {
     icon: "/assets/icons/logo-icon.svg",
   },

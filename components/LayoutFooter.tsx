@@ -1,7 +1,8 @@
-import Image from "next/image";
+// components/LayoutFooter.tsx - Updated with green hover
 import Link from "next/link";
 
 import { FOOTER_DATA } from "@/constants/navigation";
+import { Logo } from "@/components/Logo";
 
 export const LayoutFooter = () => {
   return (
@@ -10,32 +11,31 @@ export const LayoutFooter = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
           {/* Logo and Information */}
           <div className="lg:w-1/3">
-            <Link href="/">
-              <Image
-                src="/assets/icons/logo-full.svg"
-                height={1000}
-                width={1000}
-                alt="Link Opticians"
-                className="h-10 w-fit mb-6"
+            <Link href="/" className="group">
+              <Logo 
+                width={210} 
+                height={40} 
+                showTagline={true}
+                className="h-10 w-fit mb-6 group-hover:opacity-90 transition-opacity"
               />
             </Link>
             <p className="text-dark-600">
               Eye care services available at clinic locations.
-            </p> {/* CHANGED: More factual, less promotional */}
+            </p>
             <p className="text-dark-600 text-sm mt-4">
-              Optometry practice registered in Zimbabwe. {/* CHANGED: Removed promotional text */}
+              Optometry practice registered in Zimbabwe.
             </p>
           </div>
           
           {/* Quick Links */}
           <div className="lg:w-1/3">
-            <h3 className="text-16-semibold mb-6 text-white">Clinic Information</h3> {/* CHANGED: More professional */}
+            <h3 className="text-16-semibold mb-6 text-white">Clinic Information</h3>
             <div className="grid grid-cols-2 gap-4">
               {FOOTER_DATA.links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-14-regular text-dark-600 hover:text-white transition block py-1"
+                  className="text-14-regular text-dark-600 hover:text-green-500 transition block py-1"
                 >
                   {link.label}
                 </Link>
@@ -73,24 +73,24 @@ export const LayoutFooter = () => {
         <div className="mt-12 pt-8 border-t border-dark-500">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-dark-600 text-sm">
-              © {new Date().getFullYear()} Link Opticians. All rights reserved. {/* CHANGED: Current year */}
+              © {new Date().getFullYear()} Link Opticians. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link 
                 href="/?admin=true" 
-                className="text-12-regular text-dark-600 hover:text-white transition"
+                className="text-12-regular text-dark-600 hover:text-green-500 transition"
               >
                 Admin Access
               </Link>
               <Link 
-                href="/privacy-policy" /* NEEDS TO BE CREATED */
-                className="text-12-regular text-dark-600 hover:text-white transition"
+                href="/privacy-policy"
+                className="text-12-regular text-dark-600 hover:text-green-500 transition"
               >
                 Privacy Notice
               </Link>
               <Link 
-                href="/terms-of-service" /* NEEDS TO BE CREATED */
-                className="text-12-regular text-dark-600 hover:text-white transition"
+                href="/terms-of-service"
+                className="text-12-regular text-dark-600 hover:text-green-500 transition"
               >
                 Terms
               </Link>

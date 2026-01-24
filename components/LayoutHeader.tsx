@@ -1,12 +1,13 @@
+// components/LayoutHeader.tsx - Updated with green hover
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { NAVIGATION_LINKS } from "@/constants/navigation";
+import { Logo } from "@/components/Logo";
 
 interface LayoutHeaderProps {
   activePage?: string;
@@ -42,13 +43,12 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
   return (
     <header className="sticky top-0 z-50 bg-dark-400 border-b border-dark-500">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-[5%] py-4">
-        <Link href="/" onClick={closeMobileMenu}>
-          <Image
-            src="/assets/icons/logo-full.svg"
-            height={1000}
-            width={1000}
-            alt="Link Opticians"
-            className="h-8 w-fit"
+        <Link href="/" onClick={closeMobileMenu} className="group">
+          <Logo 
+            width={160} 
+            height={30} 
+            showTagline={false}
+            className="h-8 w-fit group-hover:opacity-90 transition-opacity"
           />
         </Link>
         
@@ -60,8 +60,8 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
               href={link.href}
               className={`text-14-medium transition ${
                 currentPage === link.id
-                  ? "text-white font-semibold"
-                  : "text-dark-600 hover:text-white"
+                  ? "text-green-500 font-semibold"
+                  : "text-dark-600 hover:text-green-500"
               }`}
             >
               {link.label}
@@ -69,7 +69,7 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
           ))}
           {/* FIXED: Button with proper child structure */}
           <Button 
-            className="shad-gray-btn border-dark-500" 
+            className="shad-gray-btn border-dark-500 hover:bg-green-500 hover:text-white hover:border-green-500 transition" 
             asChild={true}
           >
             <Link href="/book">Book Appointment</Link>
@@ -86,17 +86,38 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
           
           {/* Mobile menu button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 hover:text-green-500 transition"
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <Image
-              src={isMobileMenuOpen ? "/assets/icons/close.svg" : "/assets/icons/menu.svg"}
-              width={24}
-              height={24}
-              alt={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
               className="size-6"
-            />
+            >
+              {isMobileMenuOpen ? (
+                // Close icon (X)
+                <path
+                  d="M18 6L6 18M6 6L18 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              ) : (
+                // Menu icon (hamburger)
+                <path
+                  d="M3 12H21M3 6H21M3 18H21"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              )}
+            </svg>
           </button>
         </div>
       </div>
@@ -114,8 +135,8 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
                 onClick={closeMobileMenu}
                 className={`py-3 px-4 rounded-lg transition ${
                   currentPage === link.id
-                    ? "bg-dark-300 text-white font-semibold"
-                    : "text-dark-600 hover:bg-dark-300 hover:text-white"
+                    ? "bg-dark-300 text-green-500 font-semibold"
+                    : "text-dark-600 hover:bg-dark-300 hover:text-green-500"
                 }`}
               >
                 {link.label}
@@ -125,7 +146,7 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
             <div className="pt-4 mt-2 border-t border-dark-500">
               {/* FIXED: Mobile button with proper structure */}
               <Button 
-                className="shad-gray-btn border-dark-500 w-full" 
+                className="shad-gray-btn border-dark-500 w-full hover:bg-green-500 hover:text-white hover:border-green-500 transition" 
                 asChild={true}
               >
                 <Link href="/book" onClick={closeMobileMenu}>
