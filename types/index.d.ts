@@ -6,8 +6,9 @@ declare type SearchParamProps = {
 };
 
 declare type Gender = "male" | "female" | "other";
-// FIXED: Changed to match database schema: "schedule" instead of "scheduled"
-declare type Status = "pending" | "schedule" | "cancelled";  // CHANGED: "scheduled" to "schedule"
+
+// CORRECT: This matches your database schema which uses "schedule" (not "scheduled")
+declare type Status = "pending" | "schedule" | "cancelled";
 
 declare interface CreateUserParams {
   name: string;
@@ -45,15 +46,7 @@ declare interface Branch {
   address: string;
   phone: string;
   email: string;
-  operatingHours: {
-    monday: string;
-    tuesday: string;
-    wednesday: string;
-    thursday: string;
-    friday: string;
-    saturday: string;
-    sunday: string;
-  };
+  operatingHours: string; // CHANGED: Based on your database schema, it's a string, not an object
   services: string[];
   doctors: string[];
   isActive: boolean;
@@ -78,7 +71,7 @@ declare type UpdateAppointmentParams = {
     schedule: Date;
     status: Status;
     cancellationReason: string | undefined;
-    branchId?: string; // ADDED this
+    branchId?: string;
   };
   type: "create" | "schedule" | "cancel";
 };

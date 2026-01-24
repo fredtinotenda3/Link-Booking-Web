@@ -1,3 +1,5 @@
+// components\TeamCard.tsx - CORRECTED VERSION
+
 import Image from "next/image";
 import { TeamMember } from "@/constants/about";
 
@@ -13,7 +15,7 @@ export const TeamCard = ({ member }: TeamCardProps) => {
           src={member.image}
           width={300}
           height={192}
-          alt={member.name}
+          alt={`${member.name}, ${member.role}`}
           className="w-full h-full object-cover"
         />
       </div>

@@ -54,6 +54,7 @@ export const getRecentAppointmentList = async () => {
 
     const counts = (appointments.documents as Appointment[]).reduce(
       (acc, appointment) => {
+        // FIXED: Use exact database values
         if (appointment.status === "schedule") {
           acc.scheduledCount += 1;
         } else if (appointment.status === "pending") {
@@ -121,7 +122,7 @@ export const updateAppointment = async ({
 
     switch (type) {
       case "schedule":
-        status = "schedule";
+        status = "schedule";  // Database uses "schedule" (without "d")
         break;
       case "cancel":
         status = "cancelled";
@@ -148,7 +149,10 @@ export const updateAppointment = async ({
     
     const patient = await getPatient(fullAppointment.patient.$id);
     
-    const smsMessage = `Link Opticians appointment notification. ${
+    // FIXED: Use the correct status in SMS message
+    const smsMessage = `Link Opticians appointment ${
+      type === "schedule" ? "scheduled" : "cancelled"
+    }. ${
       type === "schedule"
         ? `Appointment scheduled for ${formatDateTime(appointment.schedule!).dateTime}`
         : `Appointment cancelled for ${formatDateTime(appointment.schedule!).dateTime}`

@@ -1,3 +1,5 @@
+
+
 export interface HomeServicePreview {
   id: string;
   title: string;
@@ -8,47 +10,47 @@ export interface HomeServicePreview {
 export const HOME_SERVICES_PREVIEW: HomeServicePreview[] = [
   {
     id: "eye-exam",
-    title: "Comprehensive Eye Exams",
-    description: "Eye examinations using available diagnostic equipment.",
+    title: "Eye Examinations",
+    description: "Professional eye examinations",
     icon: "/assets/icons/eye.svg"
   },
   {
     id: "contact-lens",
-    title: "Contact Lens Fitting",
-    description: "Contact lens fitting services with follow-up care.",
+    title: "Contact Lens Services",
+    description: "Contact lens fitting services",
     icon: "/assets/icons/contact-lens.svg"
   },
   {
     id: "prescription-glasses",
     title: "Prescription Glasses",
-    description: "Frames and lenses according to prescription requirements.",
+    description: "Frames and lenses according to prescription",
     icon: "/assets/icons/glasses.svg"
   },
   {
     id: "dry-eye",
-    title: "Dry Eye Treatment",
-    description: "Management of dry eye syndrome and related conditions.",
+    title: "Dry Eye Services",
+    description: "Management of dry eye conditions",
     icon: "/assets/icons/dry-eye.svg"
   },
   {
     id: "pediatric",
-    title: "Pediatric Optometry",
-    description: "Eye care services for children's vision development.",
+    title: "Pediatric Services",
+    description: "Eye care services for children",
     icon: "/assets/icons/pediatric.svg"
   },
   {
     id: "emergency",
-    title: "Emergency Eye Care",
-    description: "Care for eye injuries and sudden vision changes.",
+    title: "Emergency Services",
+    description: "Care for eye injuries and vision changes",
     icon: "/assets/icons/emergency.svg"
   }
 ];
 
 export const HOME_HERO_DATA = {
   title: "Link Opticians",
-  description: "Providing eye care services with available diagnostic technology.",
+  description: "Professional optometry services",
   primaryCta: {
-    text: "Schedule Appointment",
+    text: "Book Appointment",
     href: "/book"
   },
   secondaryCta: {
@@ -57,15 +59,6 @@ export const HOME_HERO_DATA = {
   },
   image: {
     src: "/assets/images/eye-care-hero.png",
-    alt: "Eye examination at Link Opticians"
-  }
-};
-
-export const HOME_CTA_DATA = {
-  title: "Schedule Your Eye Exam",
-  description: "Appointments can be scheduled online.",
-  cta: {
-    text: "Schedule Appointment",
-    href: "/book"
+    alt: "Optometrist conducting eye examination"
   }
 };

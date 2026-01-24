@@ -18,40 +18,50 @@ const Admin = async () => {
   }, {});
 
   // Enhance appointment data with branch names
-  // Already enhances data correctly - no changes needed
-    const enhancedAppointments = {
-      ...appointments,
-      documents: appointments.documents.map((appt: any) => ({
-        ...appt,
-        branchName: branchMap[appt.branchId] || appt.branchId
-      }))
-    };  
+  const enhancedAppointments = {
+    ...appointments,
+    documents: appointments.documents.map((appt: any) => ({
+      ...appt,
+      branchName: branchMap[appt.branchId] || appt.branchId
+    }))
+  };  
 
   return (
-    <div className="mx-auto flex max-w-7xl flex-col space-y-14">
-      <header className="admin-header">
-        <Link href="/" className="cursor-pointer">
-          <Image
-            src="/assets/icons/logo-full.svg"
-            height={32}
-            width={162}
-            alt="logo"
-            className="h-8 w-fit"
-          />
-        </Link>
-
-        <p className="text-16-semibold">Admin Dashboard</p>
+    <div className="min-h-screen bg-dark-300">
+      {/* Admin Header - Updated to match public site style */}
+      <header className="sticky top-0 z-50 bg-dark-400 border-b border-dark-500">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-[5%] py-4">
+          <Link href="/">
+            <Image
+              src="/assets/icons/logo-full.svg"
+              height={1000}
+              width={1000}
+              alt="Link Opticians"
+              className="h-8 w-fit"
+            />
+          </Link>
+          
+          <div className="flex items-center gap-4">
+            <p className="text-16-semibold text-green-500">Admin Dashboard</p>
+            <Link 
+              href="/" 
+              className="text-14-medium hover:text-green-500 transition"
+            >
+              View Public Site
+            </Link>
+          </div>
+        </div>
       </header>
 
-      <main className="admin-main">
-        <section className="w-full space-y-4">
+      <main className="mx-auto max-w-7xl px-[5%] py-8">
+        <section className="w-full space-y-4 mb-8">
           <h1 className="header">Welcome 👋</h1>
           <p className="text-dark-700">
             Start the day with managing new appointments
           </p>
         </section>
 
-        <section className="admin-stat">
+        <section className="admin-stat mb-8">
           <StatCard
             type="appointments"
             count={appointments.scheduledCount}

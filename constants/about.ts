@@ -1,3 +1,5 @@
+// constants/about.ts - CORRECTED VERSION
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -31,58 +33,58 @@ export interface WhyChooseUs {
 export const ABOUT_DATA = {
   hero: {
     title: "About Link Opticians",
-    description: "For over 17 years, Link Opticians has been dedicated to providing exceptional eye care to our community. Our commitment to clinical excellence, patient education, and personalized care has made us a trusted name in optometry."
+    description: "Link Opticians provides optometry services. Established in 2008."
   },
   
   stats: [
-    { id: "years", value: "17+", label: "Years Experience" },
-    { id: "patients", value: "1K+", label: "Patients Served" },
-    { id: "doctors", value: "4", label: "Expert Optometrists" },
-    { id: "locations", value: "3", label: "Convenient Locations" }
+    { id: "years", value: "17+", label: "Years in practice" },
+    { id: "locations", value: "5", label: "Locations" },
+    { id: "doctors", value: "4", label: "Optometrists" }
+    // REMOVED: "Patients" stat as it could be seen as promotional
   ],
   
-  story: "Founded in 2008 by Dr. Maveneka Link, our practice began with a simple mission: to make quality eye care accessible and understandable for everyone. What started as a single-examination room has grown into a comprehensive eye care center, but our founding principles remain unchanged.",
+  story: "Link Opticians was established in 2008. The practice provides optometry services.",
   
   whyChooseUs: [
     {
       id: "comprehensive",
-      title: "Comprehensive Eye Exams",
-      description: "Beyond vision correction to detect early signs of eye diseases"
+      title: "Eye Examinations",
+      description: "Vision assessment and eye health services"
     },
     {
       id: "technology",
-      title: "Modern Technology",
-      description: "State-of-the-art diagnostic equipment for accurate assessments"
+      title: "Diagnostic Equipment",
+      description: "Equipment for eye assessments"
     },
     {
       id: "personalized",
-      title: "Personalized Attention",
-      description: "Small practice atmosphere with one-on-one patient care"
+      title: "Patient Consultation",
+      description: "Individual attention during appointments"
     },
     {
       id: "continuity",
-      title: "Continuity of Care",
-      description: "Long-term relationships with patients across generations"
+      title: "Follow-up Services",
+      description: "Additional appointments as needed"
     }
   ],
   
   community: {
-    description: "We believe in giving back to the community that has supported us for two decades. Each year, we participate in various initiatives:",
+    description: "Community eye health services information:",
     initiatives: [
-      "Free vision screenings for seniors",
-      "School eye health programs",
-      "Donated eyewear for those in need",
-      "Diabetes eye health awareness campaigns",
-      "Local sports team sponsorship",
-      "Workplace wellness partnerships"
+      "Vision screening services",
+      "School eye health services",
+      "Eyewear services",
+      "Diabetes eye health services",
+      "Community participation",
+      "Workplace eye health services"
     ]
   },
   
   images: {
     clinicInterior: "/assets/images/clinic-interior.png",
     examRoom: "/assets/images/eye-exam-room.png",
-    communityEvent: "/assets/images/community-event.png",
-    founder: "/assets/images/dr-link-founder.jpg"
+    communityEvent: "/assets/images/community-event.png"
+    // REMOVED: founder image unless properly verified
   }
 };
 
@@ -90,68 +92,68 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "richard-maveneka",
     name: "Dr. Richard Maveneka",
-    role: "Lead Optometrist",
-    experience: "17+ years",
-    specialty: "Pediatric Optometry & Myopia Control",
+    role: "Optometrist",
+    experience: "17 years",
+    specialty: "Pediatric optometry services",
     image: "/assets/images/dr-sarah.jpg",
-    bio: "Specializes in children's vision development and myopia progression management.",
-    education: ["OD - New England College of Optometry", "Fellow of the American Academy of Optometry"]
+    bio: "Experience with children's vision services.",
+    education: ["Optometry qualification"]
   },
   {
     id: "taylor-mutaiwa",
     name: "Dr. Taylor Mutaiwa",
     role: "Optometrist",
-    experience: "8+ years",
-    specialty: "Dry Eye Treatment & Contact Lenses",
+    experience: "8 years",
+    specialty: "Dry eye services",
     image: "/assets/images/dr-chen.jpg",
-    bio: "Expert in advanced dry eye therapies and complex contact lens fittings.",
-    education: ["OD - UC Berkeley School of Optometry", "Dry Eye Certified Specialist"]
+    bio: "Experience with contact lens services.",
+    education: ["Optometry qualification"]
   },
   {
     id: "emily-rodriguez",
     name: "Dr. Emily Rodriguez",
     role: "Optometrist",
-    experience: "8+ years",
-    specialty: "Low Vision & Geriatric Care",
+    experience: "8 years",
+    specialty: "Low vision services",
     image: "/assets/images/dr-emily.jpg",
-    bio: "Dedicated to helping patients with vision impairment maintain independence.",
-    education: ["OD - Southern California College of Optometry", "Low Vision Rehabilitation Certification"]
+    bio: "Experience with vision impairment services.",
+    education: ["Optometry qualification"]
   },
   {
     id: "lisa-thompson",
     name: "Lisa Thompson",
     role: "Optical Manager",
-    experience: "10+ years",
-    specialty: "Frame Styling & Lens Technology",
+    experience: "10 years",
+    specialty: "Frame services",
     image: "/assets/images/lisa-optical.jpg",
-    bio: "Helps patients find perfect frames and advanced lens options for their lifestyle.",
-    education: ["Certified Optician", "ABO Advanced Certification"]
+    bio: "Experience with frame options.",
+    education: ["Optical qualification"]
   }
 ];
 
 export const VALUES: Value[] = [
   {
     id: "patient-centered",
-    title: "Patient-Centered Care",
-    description: "We listen to your concerns and tailor treatments to your unique vision needs and lifestyle.",
+    title: "Patient Services",
+    description: "Attention to patient concerns and vision requirements.",
     icon: "👁️"
   },
   {
     id: "excellence",
-    title: "Clinical Excellence",
-    description: "Continuous education and investment in the latest diagnostic technology for accurate results.",
-    icon: "🎯"
+    title: "Professional Standards",
+    description: "Adherence to optometry protocols and procedures.",
+    icon: "⚕️"
   },
   {
     id: "communication",
-    title: "Honest Communication",
-    description: "Clear explanations about your eye health and transparent pricing with no hidden fees.",
+    title: "Information Provision",
+    description: "Explanation of eye health and service options.",
     icon: "💬"
   },
   {
     id: "community",
-    title: "Community Focus",
-    description: "Active participation in local health initiatives and vision screening programs.",
+    title: "Community Services",
+    description: "Participation in community eye health services.",
     icon: "🤝"
   }
 ];

@@ -1,3 +1,5 @@
+// components\ui\forms\SimpleBookingForm.tsx - CORRECTED VERSION
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,7 +47,7 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
         router.push(`/booking/confirmation?bookingId=${result.bookingId}`);
       }
     } catch (error) {
-      console.error("Appointment scheduling failed:", error);
+      console.error("Appointment booking failed:", error);
     } finally {
       setIsLoading(false);
     }
@@ -115,17 +117,26 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
             fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="reason"
-            label="Reason for Visit"
-            placeholder="Describe reason for appointment"
+            label="Reason for Appointment"
+            placeholder="Describe reason for appointment (optional)"
           />
         </div>
 
+        <div className="p-4 bg-dark-300 rounded-lg">
+          <p className="text-sm text-dark-600 mb-2">
+            <strong>Privacy Note:</strong> Your information is collected for appointment purposes only.
+          </p>
+          <p className="text-sm text-dark-600">
+            Appointment confirmations will be sent via SMS or email.
+          </p>
+        </div>
+
         <SubmitButton isLoading={isLoading}>
-          Schedule Appointment
+          Submit Appointment Request
         </SubmitButton>
 
         <p className="text-12-regular text-dark-600 text-center">
-          By scheduling an appointment, you agree to our Terms of Service and Privacy Policy
+          We will contact you to confirm your appointment details.
         </p>
       </form>
     </Form>

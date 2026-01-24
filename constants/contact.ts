@@ -1,6 +1,4 @@
-// This file should only contain contact-related constants
-// Remove the ABOUT_DATA, TEAM_MEMBERS, VALUES from here
-// They should only exist in constants/about.ts
+// constants/contact.ts - CORRECTED VERSION
 
 export interface FAQ {
   id: string;
@@ -22,37 +20,37 @@ export interface ContactInfo {
 
 export const CONTACT_DATA = {
   hero: {
-    title: "Contact Link Opticians",
-    description: "Get in touch with our team for appointments, questions, or emergency eye care services."
+    title: "Contact Information",
+    description: "Contact information for appointments, questions, or emergency services."
   },
   
   contactInfo: [
     {
       id: "phone",
-      title: "Phone",
-      details: "Main: +263 123 456 789\nEmergency: +263 77 340 7464",
+      title: "Phone Information",
+      details: "Contact: +263 123 456 789\nEmergency: +263 77 340 7464",
       icon: "/assets/icons/phone.svg",
-      action: { type: "tel", value: "757558/757990" }
+      action: { type: "tel", value: "+263123456789" }
     },
     {
       id: "email",
-      title: "Email",
-      details: "info@linkopticians.co.zw\nappointments@linkopticians.co.zw",
+      title: "Email Information",
+      details: "General: info@linkopticians.co.zw\nAppointments: appointments@linkopticians.co.zw",
       icon: "/assets/icons/email.svg",
       action: { type: "mailto", value: "info@linkopticians.co.zw" }
     },
     {
       id: "hours",
-      title: "Operating Hours",
-      details: "Mon-Fri: 8:00 AM - 6:00 PM\nSat: 9:00 AM - 1:00 PM\nSun: Emergency Only",
+      title: "Hours Information",
+      details: "Monday-Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 1:00 PM\nSunday: Emergency services",
       icon: "/assets/icons/clock.svg"
     }
   ],
   
   map: {
     title: "Main Clinic Location",
-    address: "Shop 15 & 16  Robinson House, Cnr Angwa / K.Nkrumah, Harare, Zimbabwe",
-    placeholder: "Interactive map showing clinic location",
+    address: "Shop 15 & 16 Robinson House, Cnr Angwa / K.Nkrumah, Harare, Zimbabwe",
+    placeholder: "Location information available",
     directionsUrl: "https://maps.google.com"
   },
   
@@ -62,49 +60,61 @@ export const CONTACT_DATA = {
   },
   
   emergency: {
-    title: "24/7 Emergency Eye Care",
-    subtitle: "For eye injuries, sudden vision loss, or severe eye pain",
+    title: "Emergency Eye Services",
+    subtitle: "For eye injuries, sudden vision changes, or severe eye pain",
     appointmentReason: "Emergency eye consultation"
   },
   
   footer: {
-    tagline: "24/7 Emergency Care Available"
+    tagline: "Emergency services available"
   }
 };
 
 export const FAQ_DATA: FAQ[] = [
   {
     id: "appointment",
-    question: "How do I book an appointment?",
-    answer: "You can book online through our website, call us directly, or visit any of our clinic locations during operating hours.",
+    question: "How do I schedule an appointment?",
+    answer: "Appointments can be scheduled online through our website, by phone, or by visiting clinic locations during operating hours.",
     category: "Appointments"
   },
   {
     id: "emergency",
-    question: "What constitutes an eye emergency?",
-    answer: "Sudden vision loss, eye injuries, chemical exposure, severe eye pain, or seeing flashes/floaters require immediate attention.",
+    question: "What services are available for emergencies?",
+    answer: "Emergency eye services are available for eye injuries, sudden vision loss, chemical exposure, severe eye pain, or visual disturbances.",
     category: "Emergency"
   },
   {
     id: "insurance",
-    question: "Do you accept medical insurance?",
-    answer: "Yes, we accept most major insurance providers. Please bring your insurance card and ID to your appointment.",
-    category: "Billing"
+    question: "What payment options are available?",
+    answer: "Medical aid coverage information and cash payment options are available. Please bring insurance information to appointments.",
+    category: "Payment"
+  },
+  {
+    id: "location",
+    question: "Where are your clinics located?",
+    answer: "Clinic locations are in Harare, Chipinge, and Chiredzi. Mobile unit services are also available.",
+    category: "Locations"
+  },
+  {
+    id: "hours",
+    question: "What are your operating hours?",
+    answer: "Operating hours vary by location. Most clinics operate Monday-Friday 8:00 AM - 6:00 PM, with Saturday hours available.",
+    category: "Hours"
   }
 ];
 
 export const CONTACT_FORM_SUBJECTS = [
-  { value: "appointment", label: "Book/Cancel Appointment" },
-  { value: "general", label: "General Inquiry" },
-  { value: "billing", label: "Billing Question" },
-  { value: "emergency", label: "Emergency Care" },
-  { value: "feedback", label: "Feedback/Suggestion" }
+  { value: "appointment", label: "Appointment Information" },
+  { value: "general", label: "General Information" },
+  { value: "billing", label: "Payment Information" },
+  { value: "emergency", label: "Emergency Information" },
+  { value: "feedback", label: "Service Information" }
 ];
 
 export const APPOINTMENT_TYPES = [
-  { value: "routine", label: "Routine Eye Exam" },
-  { value: "contact-lens", label: "Contact Lens Fitting" },
-  { value: "emergency", label: "Emergency Visit" },
+  { value: "routine", label: "Routine Examination" },
+  { value: "contact-lens", label: "Contact Lens Services" },
+  { value: "emergency", label: "Emergency Services" },
   { value: "follow-up", label: "Follow-up Appointment" },
   { value: "specialized", label: "Specialized Consultation" }
 ];

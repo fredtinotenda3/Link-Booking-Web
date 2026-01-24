@@ -18,9 +18,27 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
   },
   {
     id: "services",
-    label: "Services",
+    label: "Services & Pricing",
     href: "/services",
-    description: "View all eye care services"
+    description: "View our services with transparent pricing"
+  },
+  {
+    id: "products",
+    label: "Products",
+    href: "/products",
+    description: "View frames, sunglasses, and contact lenses"
+  },
+  {
+    id: "locations",
+    label: "Locations",
+    href: "/locations",
+    description: "Find our clinics and mobile unit"
+  },
+  {
+    id: "community",
+    label: "Community",
+    href: "/community",
+    description: "School programs, mobile unit, and outreach"
   },
   {
     id: "about",
@@ -38,10 +56,13 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
 
 export const FOOTER_DATA = {
   tagline: "Professional Eye Care Services",
-  copyright: "© 2024 Link Opticians. All rights reserved.",
+  copyright: "© 2026 Link Opticians. All rights reserved.",
   links: [
     { id: "home", label: "Home", href: "/" },
     { id: "services", label: "Services", href: "/services" },
+    { id: "products", label: "Products", href: "/products" },
+    { id: "locations", label: "Locations", href: "/locations" },
+    { id: "community", label: "Community", href: "/community" },
     { id: "about", label: "About", href: "/about" },
     { id: "contact", label: "Contact", href: "/contact" },
     { id: "book", label: "Book Online", href: "/book" }

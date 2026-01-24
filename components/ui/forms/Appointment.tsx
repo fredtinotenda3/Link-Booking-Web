@@ -52,6 +52,8 @@ export const AppointmentForm = ({
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
       branchId: appointment?.branchId || "",
+      // ADDED: Include status in default values
+      status: appointment?.status || (type === "cancel" ? "cancelled" : type === "schedule" ? "schedule" : "pending"),
     },
   });
 
@@ -64,7 +66,7 @@ export const AppointmentForm = ({
     let status: Status;
     switch (type) {
       case "schedule":
-        status = "schedule"; 
+        status = "schedule"; // FIXED: Use "schedule" not "scheduled"
         break;
       case "cancel":
         status = "cancelled";

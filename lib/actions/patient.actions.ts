@@ -119,7 +119,7 @@ export const getRecentAppointmentList = async () => {
     );
 
     const initialCounts = {
-      scheduledCount: 0,  // FIXED: Changed from scheduleCount to scheduledCount
+      scheduledCount: 0,
       pendingCount: 0,
       cancelledCount: 0,
     };
@@ -129,7 +129,7 @@ export const getRecentAppointmentList = async () => {
       (acc, appointment) => {
         switch (appointment.status) {
           case "schedule":  // Database uses "schedule" (without "d")
-            acc.scheduledCount++;  // FIXED: Changed from scheduleCount to scheduledCount
+            acc.scheduledCount++;
             break;
           case "pending":
             acc.pendingCount++;

@@ -1,3 +1,5 @@
+// app\(public)\booking\confirmation\page.tsx - CORRECTED VERSION
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -17,9 +19,9 @@ export default async function BookingConfirmation({
     return (
       <div className="flex h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="header">Booking Not Found</h1>
+          <h1 className="header">Appointment Information Not Found</h1>
           <Link href="/book" className="text-green-500">
-            Go back to booking
+            Return to booking
           </Link>
         </div>
       </div>
@@ -37,7 +39,7 @@ export default async function BookingConfirmation({
             src="/assets/icons/logo-full.svg"
             height={1000}
             width={1000}
-            alt="CarePulse"
+            alt="Link Opticians"
             className="h-10 w-fit"
           />
         </Link>
@@ -47,18 +49,18 @@ export default async function BookingConfirmation({
             src="/assets/gifs/success.gif"
             height={200}
             width={200}
-            alt="Success"
+            alt="Appointment submitted"
           />
           <h2 className="header mb-6">
-            Appointment <span className="text-green-500">Booked!</span>
+            Appointment <span className="text-green-500">Request Submitted</span>
           </h2>
           <p className="text-dark-700 mb-8">
-            We&apos;ve received your booking request and will confirm shortly.
+            Your appointment request has been received. We will contact you to confirm details.
           </p>
         </section>
 
         <section className="w-full space-y-6 rounded-lg border border-dark-500 p-6">
-          <h3 className="sub-header">Booking Details</h3>
+          <h3 className="sub-header">Appointment Information</h3>
           
           <div className="space-y-4">
             <div className="flex justify-between">
@@ -74,23 +76,36 @@ export default async function BookingConfirmation({
             </div>
             
             <div className="flex justify-between">
+              <span className="text-dark-600">Status:</span>
+              <span className="font-medium capitalize">
+                {appointment.status === "schedule" ? "pending confirmation" : appointment.status}
+              </span>
+            </div>
+            
+            <div className="flex justify-between">
               <span className="text-dark-600">Reference:</span>
               <span className="font-mono">{bookingId.slice(0, 8)}</span>
             </div>
           </div>
         </section>
 
-        <div className="flex w-full flex-col gap-4">
+        <div className="mt-6 p-4 bg-dark-300 rounded-lg">
+          <p className="text-sm text-dark-600">
+            <strong>Next Steps:</strong> We will contact you to confirm your appointment. For emergencies, call <span className="text-green-500">+263 77 340 7464</span>.
+          </p>
+        </div>
+
+        <div className="flex w-full flex-col gap-4 mt-6">
           <Button asChild className="shad-primary-btn">
             <Link href="/">Return Home</Link>
           </Button>
           
           <Button asChild variant="outline" className="shad-gray-btn">
-            <Link href="/book">Book Another</Link>
+            <Link href="/book">Book Another Appointment</Link>
           </Button>
         </div>
 
-        <p className="copyright mt-8">© 2024 CarePulse</p>
+        <p className="copyright mt-8">© 2026 Link Opticians</p>
       </div>
     </div>
   );

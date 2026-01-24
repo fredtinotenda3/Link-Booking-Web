@@ -10,7 +10,7 @@ interface ServiceCardProps {
 
 export const ServiceCard = ({ service }: ServiceCardProps) => {
   return (
-    <div className="bg-dark-400 border border-dark-500 rounded-xl p-8 h-full flex flex-col">
+    <article className="bg-dark-400 border border-dark-500 rounded-xl p-8 h-full flex flex-col">
       <div className="flex items-start gap-4 mb-6">
         <div className="p-3 bg-dark-300 rounded-lg flex-shrink-0">
           <Image
@@ -29,11 +29,11 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       </p>
       
       <div className="mb-8">
-        <h4 className="text-14-semibold text-dark-700 mb-3">Service includes:</h4>
+        <h4 className="text-14-semibold text-dark-700 mb-3">Service components:</h4>
         <ul className="space-y-2">
           {service.features.map((feature, idx) => (
-            <li key={idx} className="flex items-center gap-2 text-14-regular">
-              <div className="size-2 bg-green-500 rounded-full flex-shrink-0"></div>
+            <li key={idx} className="flex items-start gap-2 text-14-regular">
+              <div className="mt-1.5 size-1.5 bg-dark-600 rounded-full flex-shrink-0"></div>
               <span>{feature}</span>
             </li>
           ))}
@@ -41,12 +41,12 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       </div>
       
       <div className="mt-auto">
-        <Button className="shad-gray-btn w-full" asChild>
-          <Link href={`/book?service=${encodeURIComponent(service.title)}`}>
-            Schedule This Service
+        <Button className="shad-gray-btn w-full" asChild aria-label={`Information about ${service.title}`}>
+          <Link href={`/contact?service=${encodeURIComponent(service.title)}`}>
+            Service Information
           </Link>
         </Button>
       </div>
-    </div>
+    </article>
   );
 };

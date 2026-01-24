@@ -76,10 +76,13 @@ export const PatientFormValidation = z.object({
     }),
 });
 
-// UPDATED: Added branchId, made primaryPhysician optional
+// ADDED: Status validation schema that matches database values
+export const StatusSchema = z.enum(["pending", "schedule", "cancelled"]);
+
+// UPDATED: Added branchId, made primaryPhysician optional, added status validation
 export const CreateAppointmentSchema = z.object({
-  branchId: z.string().min(1, "Please select a branch"), // NEW
-  primaryPhysician: z.string().optional(), // Made optional
+  branchId: z.string().min(1, "Please select a branch"),
+  primaryPhysician: z.string().optional(),
   schedule: z.coerce.date(),
   reason: z
     .string()
@@ -87,22 +90,26 @@ export const CreateAppointmentSchema = z.object({
     .max(500, "Reason must be at most 500 characters"),
   note: z.string().optional(),
   cancellationReason: z.string().optional(),
+  // ADDED: Status field with proper validation
+  status: StatusSchema.optional().default("pending"),
 });
 
-// UPDATED: Added branchId, made primaryPhysician optional
+// UPDATED: Added branchId, made primaryPhysician optional, added status validation
 export const ScheduleAppointmentSchema = z.object({
-  branchId: z.string().min(1, "Please select a branch"), // NEW
-  primaryPhysician: z.string().optional(), // Made optional
+  branchId: z.string().min(1, "Please select a branch"),
+  primaryPhysician: z.string().optional(),
   schedule: z.coerce.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
   cancellationReason: z.string().optional(),
+  // ADDED: Status field
+  status: StatusSchema.optional().default("schedule"),
 });
 
-// UPDATED: Added branchId, made primaryPhysician optional
+// UPDATED: Added branchId, made primaryPhysician optional, added status validation
 export const CancelAppointmentSchema = z.object({
-  branchId: z.string().min(1, "Please select a branch"), // NEW
-  primaryPhysician: z.string().optional(), // Made optional
+  branchId: z.string().min(1, "Please select a branch"),
+  primaryPhysician: z.string().optional(),
   schedule: z.coerce.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
@@ -110,6 +117,8 @@ export const CancelAppointmentSchema = z.object({
     .string()
     .min(2, "Reason must be at least 2 characters")
     .max(500, "Reason must be at most 500 characters"),
+  // ADDED: Status field
+  status: StatusSchema.optional().default("cancelled"),
 });
 
 export function getAppointmentSchema(type: string) {
@@ -134,25 +143,24 @@ export const SimpleBookingSchema = z.object({
   branchId: z.string().min(1, "Please select a branch"),
   schedule: z.coerce.date(),
   patientName: z.string().min(2, "Name must be at least 2 characters"),
-  patientEmail: z.string().email("Invalid email address"),
+  patientEmail: z.string().email("Invalid email address").or(z.literal("")), // Make optional
   patientPhone: z
     .string()
-    .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
+    .refine((phone) => phone === "" || /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
   reason: z
     .string()
-    .min(2, "Reason must be at least 2 characters")
     .max(200, "Reason must be at most 200 characters")
     .optional(),
 });
 
-// NEW: Branch schema validation
+// NEW: Branch schema validation - UPDATED to match database
 export const BranchSchema = z.object({
   name: z.string().min(2, "Branch name must be at least 2 characters"),
   address: z.string().min(5, "Address must be at least 5 characters"),
   phone: z.string().min(5, "Phone must be at least 5 characters"),
   email: z.string().email("Invalid email address"),
   operatingHours: z.string().min(5, "Operating hours must be provided"),
-  service: z.array(z.string()).min(1, "At least one service must be provided"),
+  services: z.array(z.string()).min(1, "At least one service must be provided"),
   doctors: z.array(z.string()).optional(),
   isActive: z.boolean().default(true),
 });

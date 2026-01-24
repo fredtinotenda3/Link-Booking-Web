@@ -1,3 +1,5 @@
+// components\ui\forms\ContactForm.tsx - CORRECTED VERSION
+
 "use client";
 
 import { useState } from "react";
@@ -13,7 +15,7 @@ import { CONTACT_FORM_SUBJECTS, APPOINTMENT_TYPES } from "@/constants/contact";
 
 const ContactFormValidation = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
+  email: z.string().email("Please enter a valid email").or(z.literal("")),
   phone: z.string().min(10, "Please enter a valid phone number"),
   subject: z.string().min(2, "Please select a subject"),
   message: z.string().min(10, "Please enter a message"),
@@ -59,10 +61,16 @@ export const ContactForm = () => {
       {isSuccess && (
         <div className="bg-green-500/10 border border-green-500 rounded-lg p-4">
           <p className="text-green-500 font-medium">
-            Message sent. We will respond.
+            Message received. We will respond during business hours.
           </p>
         </div>
       )}
+      
+      <div className="p-4 bg-dark-300 rounded-lg mb-6">
+        <p className="text-sm text-dark-600">
+          <strong>Privacy Note:</strong> Your information is collected for contact purposes only.
+        </p>
+      </div>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -71,15 +79,15 @@ export const ContactForm = () => {
               fieldType={FormFieldType.INPUT}
               control={form.control}
               name="name"
-              label="Full Name"
-              placeholder="Enter full name"
+              label="Name"
+              placeholder="Enter name"
             />
             
             <CustomFormField
               fieldType={FormFieldType.INPUT}
               control={form.control}
               name="email"
-              label="Email Address"
+              label="Email Address (optional)"
               placeholder="Enter email address"
             />
           </div>
@@ -113,7 +121,7 @@ export const ContactForm = () => {
             fieldType={FormFieldType.SELECT}
             control={form.control}
             name="appointmentType"
-            label="Appointment Type"
+            label="Appointment Type (optional)"
             placeholder="Select appointment type"
           >
             <option value="">Select appointment type</option>
@@ -138,7 +146,7 @@ export const ContactForm = () => {
           </SubmitButton>
 
           <p className="text-center text-sm text-dark-600">
-            We respond to messages during business days.
+            We respond to messages during business hours.
           </p>
         </form>
       </Form>

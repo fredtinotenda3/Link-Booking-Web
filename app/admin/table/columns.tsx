@@ -9,7 +9,12 @@ import { Appointment } from "@/types/appwite.types";
 import { StatusBadge } from "@/components/StatusBadge";
 import { AppointmentModal } from "@/components/AppointmentModal";
 
-export const columns: ColumnDef<Appointment>[] = [
+// Define an enhanced type that includes branchName
+type EnhancedAppointment = Appointment & {
+  branchName?: string;
+};
+
+export const columns: ColumnDef<EnhancedAppointment>[] = [
   {
     header: "#",
     cell: ({ row }) => {
@@ -48,19 +53,18 @@ export const columns: ColumnDef<Appointment>[] = [
       );
     },
   },
-  // Update the branch column to safely access branchName
-    {
-      accessorKey: "branchName",
-      header: "Branch",
-      cell: ({ row }) => {
-        const appointment = row.original as any; // Type cast needed
-        return (
-          <p className="text-14-regular">
-            {appointment.branchName || appointment.branchId || "No branch"}
-          </p>
-        );
-      },
+  {
+    accessorKey: "branchName",
+    header: "Branch",
+    cell: ({ row }) => {
+      const appointment = row.original;
+      return (
+        <p className="text-14-regular">
+          {appointment.branchName || appointment.branchId || "No branch"}
+        </p>
+      );
     },
+  },
   {
     accessorKey: "primaryPhysician",
     header: "Doctor",
@@ -74,11 +78,11 @@ export const columns: ColumnDef<Appointment>[] = [
       return (
         <div className="flex items-center gap-3">
           <Image
-            src={doctor?.image}
+            src={doctor?.image || "/assets/images/default-doctor.png"}
             alt="doctor"
             width={100}
             height={100}
-            className="size-8"
+            className="size-8 rounded-full border border-dark-500"
           />
           <p className="whitespace-nowrap">
             {doctor ? `Dr. ${doctor.name}` : "Not assigned"}
@@ -93,20 +97,31 @@ export const columns: ColumnDef<Appointment>[] = [
     cell: ({ row }) => {
       const appointment = row.original;
 
+      // Only show schedule button if status is pending
+      // Only show cancel button if status is schedule (scheduled)
       return (
         <div className="flex gap-1">
-          <AppointmentModal
-            patientId={appointment.patient.$id}
-            appointment={appointment}
-            type="schedule"
-            description="Please confirm the following details to schedule."
-          />
-          <AppointmentModal
-            patientId={appointment.patient.$id}
-            appointment={appointment}
-            type="cancel"
-            description="Are you sure you want to cancel your appointment?"
-          />
+          {appointment.status === "pending" && (
+            <AppointmentModal
+              patientId={appointment.patient.$id}
+              appointment={appointment}
+              type="schedule"
+              description="Please confirm the following details to schedule."
+            />
+          )}
+          {appointment.status === "schedule" && (
+            <AppointmentModal
+              patientId={appointment.patient.$id}
+              appointment={appointment}
+              type="cancel"
+              description="Are you sure you want to cancel your appointment?"
+            />
+          )}
+          {(appointment.status === "cancelled" || appointment.status === "pending") && (
+            <span className="text-14-regular text-dark-600 px-4 py-2">
+              No actions available
+            </span>
+          )}
         </div>
       );
     },
