@@ -1,4 +1,4 @@
-// app\(public)\community\page.tsx - CORRECTED VERSION
+
 
 import Image from "next/image";
 import Link from "next/link";

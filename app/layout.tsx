@@ -14,7 +14,7 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "Link Opticians",
-  description: "Optometry services at clinic locations. Eye examinations, contact lens services, and frame options available. Established in 2008.",
+  description: "Optometry services at clinic locations in Zimbabwe. Eye examinations, contact lens services, and frame options available. Established in 2008.",
   keywords: [
     "optometry",
     "eye care",
@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     "Harare",
     "Chipinge",
     "Chiredzi",
-    "Link Opticians"
+    "Link Opticians",
+    "Zimbabwe optometrist"
   ],
   authors: [{ name: "Link Opticians" }],
   robots: "index, follow",
@@ -33,16 +34,22 @@ export const metadata: Metadata = {
     locale: "en_ZW",
     url: "https://linkopticians.co.zw",
     title: "Link Opticians",
-    description: "Optometry services at clinic locations.",
+    description: "Optometry services at clinic locations in Zimbabwe.",
+    siteName: "Link Opticians",
   },
   twitter: {
     card: "summary",
     title: "Link Opticians",
-    description: "Optometry services at clinic locations.",
+    description: "Optometry services at clinic locations in Zimbabwe.",
+    creator: "@linkopticians",
   },
   icons: {
     icon: "/assets/icons/logo-icon.svg",
   },
+  other: {
+    "fb:app_id": "", // Can be added if Facebook app exists
+  },
+  metadataBase: new URL("https://linkopticians.co.zw"),
 };
 
 export default function RootLayout({

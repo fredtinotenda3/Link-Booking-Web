@@ -1,4 +1,4 @@
-// app\(public)\booking\confirmation\page.tsx - CORRECTED VERSION
+// app\(public)\booking\confirmation\page.tsx - COMPLIANT VERSION
 
 import Link from "next/link";
 import Image from "next/image";
@@ -55,7 +55,7 @@ export default async function BookingConfirmation({
             Appointment <span className="text-green-500">Request Submitted</span>
           </h2>
           <p className="text-dark-700 mb-8">
-            Your appointment request has been received. We will contact you to confirm details.
+            Your appointment request has been received. We will contact you during business hours to confirm details.
           </p>
         </section>
 
@@ -64,7 +64,7 @@ export default async function BookingConfirmation({
           
           <div className="space-y-4">
             <div className="flex justify-between">
-              <span className="text-dark-600">Date & Time:</span>
+              <span className="text-dark-600">Date & Time Requested:</span>
               <span className="font-medium">
                 {formatDateTime(appointment.schedule).dateTime}
               </span>
@@ -91,7 +91,7 @@ export default async function BookingConfirmation({
 
         <div className="mt-6 p-4 bg-dark-300 rounded-lg">
           <p className="text-sm text-dark-600">
-            <strong>Next Steps:</strong> We will contact you to confirm your appointment. For emergencies, call <span className="text-green-500">+263 77 340 7464</span>.
+            <strong>Next Steps:</strong> We will contact you during business hours to confirm your appointment. For emergencies, call <span className="text-green-500">+263 77 340 7464</span>.
           </p>
         </div>
 

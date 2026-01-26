@@ -1,4 +1,4 @@
-// app\(public)\services\page.tsx - CORRECTED VERSION
+// app\(public)\services\page.tsx - COMPLIANT VERSION
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import {
   SERVICES_DATA, 
   INSURANCE_PARTNERS, 
   PAYMENT_OPTIONS,
-  COST_SAVINGS 
+  PRACTICE_FEATURES 
 } from "@/constants/services";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         url: "/assets/images/medical-aid-accepted.jpeg",
         width: 1200,
         height: 600,
-        alt: "Medical aid services information"
+        alt: "Information about medical aid services"
       }
     ]
   },
@@ -65,7 +65,7 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="shad-gray-btn" size="lg" asChild>
-                <Link href="#pricing">Service Details</Link>
+                <Link href="#service-details">Service Details</Link>
               </Button>
               <Button className="shad-gray-btn" size="lg" asChild>
                 <Link href="/contact">Contact for Information</Link>
@@ -79,14 +79,14 @@ export default function ServicesPage() {
           <div className="mx-auto max-w-7xl px-[5%]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center p-6">
-                <div className="text-3xl mb-4">🏥</div>
+                <div className="text-3xl mb-4">🔬</div>
                 <h2 className="text-18-bold mb-2">Our Laboratory</h2>
                 <p className="text-dark-600">
                   Lenses manufactured at our clinic
                 </p>
               </div>
               <div className="text-center p-6">
-                <div className="text-3xl mb-4">💳</div>
+                <div className="text-3xl mb-4">💰</div>
                 <h2 className="text-18-bold mb-2">Payment Options</h2>
                 <p className="text-dark-600">
                   Medical aid claims and cash payment
@@ -122,7 +122,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Service Details Section */}
-        <section id="pricing" aria-labelledby="pricing-heading" className="py-16 bg-dark-300">
+        <section id="service-details" aria-labelledby="pricing-heading" className="py-16 bg-dark-300">
           <div className="mx-auto max-w-7xl px-[5%]">
             <header className="text-center mb-12">
               <h2 id="pricing-heading" className="sub-header mb-4">Service Details</h2>
@@ -137,12 +137,12 @@ export default function ServicesPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <article className="bg-dark-400 border border-dark-500 rounded-xl p-6">
-                <h3 className="text-18-bold mb-4">Service Information</h3>
+                <h3 className="text-18-bold mb-4">Practice Information</h3>
                 <ul className="space-y-3" role="list">
-                  {COST_SAVINGS.map((saving, index) => (
+                  {PRACTICE_FEATURES.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <div className="mt-1 size-2 bg-green-500 rounded-full"></div>
-                      <span className="text-dark-600">{saving}</span>
+                      <span className="text-dark-600">{feature}</span>
                     </li>
                   ))}
                 </ul>

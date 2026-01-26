@@ -1,4 +1,4 @@
-// constants/products.ts - CORRECTED VERSION
+
 
 export interface Product {
   id: string;
@@ -33,7 +33,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/frame-basic.png",
     tags: ["frames"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   },
   {
     id: "frame-design",
@@ -49,7 +49,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/frame-designer.png",
     tags: ["frames"],
-    availability: ["Harare branches"]
+    availability: ["Available at Harare branches"]
   },
   {
     id: "frame-special",
@@ -65,7 +65,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/frame-special.png",
     tags: ["frames"],
-    availability: ["Selected branches"]
+    availability: ["Available at selected branches"]
   },
 
   // SUNGLASSES
@@ -83,7 +83,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/sunglass-basic.png",
     tags: ["sunglasses"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   },
   {
     id: "sunglass-design",
@@ -99,7 +99,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/sunglass-designer.png",
     tags: ["sunglasses"],
-    availability: ["Selected branches"]
+    availability: ["Available at selected branches"]
   },
   {
     id: "sunglass-prescription",
@@ -115,7 +115,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/sunglass-prescription.png",
     tags: ["sunglasses"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   },
 
   // CONTACT LENSES
@@ -132,7 +132,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/contact-daily.png",
     tags: ["contact lenses"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   },
   {
     id: "contact-monthly",
@@ -147,7 +147,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/contact-monthly.png",
     tags: ["contact lenses"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   },
   {
     id: "contact-special",
@@ -162,7 +162,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/contact-special.png",
     tags: ["contact lenses"],
-    availability: ["Harare branches"]
+    availability: ["Available at Harare branches"]
   },
 
   // LENSES
@@ -179,7 +179,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/lens-single.png",
     tags: ["lenses"],
-    availability: ["Laboratory"]
+    availability: ["Manufactured at our laboratory"]
   },
   {
     id: "lens-progressive",
@@ -194,7 +194,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/lens-progressive.png",
     tags: ["lenses"],
-    availability: ["Laboratory"]
+    availability: ["Manufactured at our laboratory"]
   },
   {
     id: "lens-addons",
@@ -209,7 +209,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/lens-addons.png",
     tags: ["lenses"],
-    availability: ["Laboratory"]
+    availability: ["Manufactured at our laboratory"]
   },
 
   // ACCESSORIES
@@ -226,7 +226,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/accessory-solutions.png",
     tags: ["accessories"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   },
   {
     id: "accessory-cases",
@@ -241,7 +241,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/accessory-cases.png",
     tags: ["accessories"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   },
   {
     id: "accessory-readers",
@@ -256,7 +256,7 @@ export const PRODUCTS_DATA: Product[] = [
     },
     image: "/assets/images/products/accessory-readers.png",
     tags: ["accessories"],
-    availability: ["Branches"]
+    availability: ["Available at branches"]
   }
 ];
 
@@ -266,10 +266,10 @@ export const PRODUCT_CATEGORIES = [
   { id: "sunglasses", label: "Sunglasses", icon: "🕶️" },
   { id: "contact-lenses", label: "Contact Lenses", icon: "🧿" },
   { id: "lenses", label: "Lenses", icon: "🔍" },
-  { id: "accessories", label: "Accessories", icon: "🧰" }
+  { id: "accessories", label: "Accessories", icon: "🧴" }
 ];
 
-export const PRODUCT_BENEFITS = [
+export const PRODUCT_FEATURES = [
   "Lens manufacturing at our clinic",
   "Medical aid coverage information available",
   "Payment options available",

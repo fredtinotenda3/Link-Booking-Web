@@ -1,4 +1,4 @@
-// app\(public)\book\page.tsx - CORRECTED VERSION
+// app\(public)\book\page.tsx - CLEANED LAYOUT
 
 import { Suspense } from "react";
 import { SimpleBookingForm } from "@/components/ui/forms/SimpleBookingForm";
@@ -31,7 +31,7 @@ export default async function BookPage() {
             </p>
           </div>
 
-          <Suspense fallback={<div>Loading booking form...</div>}>
+          <Suspense fallback={<div className="py-8">Loading booking form...</div>}>
             <SimpleBookingForm branches={branches} />
           </Suspense>
 
@@ -40,17 +40,8 @@ export default async function BookPage() {
               <strong>Emergency Eye Care:</strong> For eye injuries, sudden vision loss, or severe eye pain, call our emergency line: <span className="text-green-500">+263 77 340 7464</span>
             </p>
             <p className="text-sm text-dark-600">
-              By booking an appointment, you agree to our <Link href="/contact" className="text-green-500 underline">Privacy Policy</Link> and <Link href="/contact" className="text-green-500 underline">Terms of Service</Link>.
+              Your information is collected for appointment purposes. By booking, you acknowledge our <Link href="/contact" className="text-green-500 underline">Privacy Notice</Link>.
             </p>
-          </div>
-
-          <div className="text-14-regular mt-12 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2024 Link Opticians
-            </p>
-            <Link href="/?admin=true" className="text-dark-600 hover:text-green-500 transition">
-              Admin Access
-            </Link>
           </div>
         </div>
       </section>

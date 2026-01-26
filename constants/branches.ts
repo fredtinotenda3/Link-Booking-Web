@@ -1,4 +1,4 @@
-// constants/branches.ts - CORRECTED VERSION
+// constants/branches.ts - COMPLIANT VERSION
 
 export interface BranchDetail {
   id: string;
@@ -128,10 +128,9 @@ export const BRANCHES_DATA: BranchDetail[] = [
     ],
     specialties: [
       'Frame services',
-      'Fashion consultation',
       'Weekend services'
     ],
-    doctors: ['Dr. Sarah Chen', 'Lisa Thompson (Optical Manager)'],
+    doctors: ['Dr. Richard Maveneka', 'Lisa Thompson (Optical Manager)'],
     facilities: [
       'Frame gallery',
       'Eye care lounge',
@@ -222,7 +221,6 @@ export const BRANCHES_DATA: BranchDetail[] = [
 ];
 
 export const MOBILE_UNIT_DATA = {
-  title: 'Mobile Eye Care Unit',
   description: 'Mobile eye care unit services information.',
   services: [
     'Basic eye screening',

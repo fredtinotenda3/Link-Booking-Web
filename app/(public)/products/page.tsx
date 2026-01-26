@@ -1,10 +1,10 @@
-// app\(public)\products\page.tsx - CORRECTED VERSION
+// app\(public)\products\page.tsx - COMPLIANT VERSION
 
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ProductCard";
-import { PRODUCTS_DATA, PRODUCT_CATEGORIES, PRODUCT_BENEFITS } from "@/constants/products";
+import { PRODUCTS_DATA, PRODUCT_CATEGORIES, PRODUCT_FEATURES } from "@/constants/products";
 
 export default function ProductsPage() {
   return (
@@ -51,12 +51,12 @@ export default function ProductsPage() {
         <section aria-label="Product information" className="py-12 bg-green-600/10">
           <div className="mx-auto max-w-7xl px-[5%]">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {PRODUCT_BENEFITS.map((benefit, index) => (
+              {PRODUCT_FEATURES.map((feature, index) => (
                 <div key={index} className="text-center p-4">
                   <div className="size-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
                     <span className="text-lg">•</span>
                   </div>
-                  <p className="text-sm text-dark-600">{benefit}</p>
+                  <p className="text-sm text-dark-600">{feature}</p>
                 </div>
               ))}
             </div>

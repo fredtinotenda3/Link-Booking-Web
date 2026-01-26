@@ -1,4 +1,4 @@
-// constants/community.ts - CORRECTED VERSION
+// constants/community.ts - COMPLIANT VERSION
 
 export interface OutreachProgram {
   id: string;
@@ -39,7 +39,7 @@ export const COMMUNITY_PROGRAMS: OutreachProgram[] = [
     services: ["Basic vision screening", "Myopia detection", "Referral for treatment", "Eye health information"],
     frequency: "Termly services",
     image: "/assets/images/community/school-screening.png",
-    impact: "Students screened"
+    impact: "Vision screening services provided"
   },
   {
     id: "senior-screenings",
@@ -49,7 +49,7 @@ export const COMMUNITY_PROGRAMS: OutreachProgram[] = [
     services: ["Cataract screening", "Glaucoma testing", "Presbyopia assessment", "Low vision evaluation"],
     frequency: "Monthly community services",
     image: "/assets/images/community/senior-screening.png",
-    impact: "Seniors served"
+    impact: "Senior eye health services provided"
   },
   {
     id: "diabetes-awareness",
@@ -59,7 +59,7 @@ export const COMMUNITY_PROGRAMS: OutreachProgram[] = [
     services: ["Retinal photography", "Diabetes eye health information", "Referral to clinics", "Follow-up care"],
     frequency: "Quarterly services",
     image: "/assets/images/community/diabetes-screening.png",
-    impact: "Diabetes patients served"
+    impact: "Diabetes eye health services provided"
   },
   {
     id: "eyewear-donation",

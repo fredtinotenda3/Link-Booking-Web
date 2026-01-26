@@ -1,4 +1,4 @@
-// components/LayoutFooter.tsx - Updated with green hover
+// components/LayoutFooter.tsx - COMPLIANT VERSION WITH DISCLAIMER
 import Link from "next/link";
 
 import { FOOTER_DATA } from "@/constants/navigation";
@@ -20,10 +20,10 @@ export const LayoutFooter = () => {
               />
             </Link>
             <p className="text-dark-600">
-              Eye care services available at clinic locations.
+              Optometry services available at clinic locations.
             </p>
             <p className="text-dark-600 text-sm mt-4">
-              Optometry practice registered in Zimbabwe.
+              Registered optometry practice in Zimbabwe.
             </p>
           </div>
           
@@ -96,11 +96,16 @@ export const LayoutFooter = () => {
               </Link>
             </div>
           </div>
-          {/* REQUIRED DISCLAIMER - ADD THIS SECTION */}
-          <div className="mt-4 text-center">
-            <p className="text-xs text-dark-600">
-              This website provides information about Link Opticians optometry practice. 
-              It does not constitute medical advice. For medical concerns, consult a healthcare professional.
+          
+          {/* REQUIRED HEALTHCARE DISCLAIMER - COMPLIANCE CRITICAL */}
+          <div className="mt-6 pt-6 border-t border-dark-500">
+            <p className="text-xs text-dark-600 text-center">
+              <strong>Important Notice:</strong> This website provides information about Link Opticians optometry practice. 
+              It does not constitute medical advice. For medical concerns, consult a qualified healthcare professional. 
+              Emergency eye conditions require immediate medical attention.
+            </p>
+            <p className="text-xs text-dark-600 text-center mt-2">
+              Link Opticians is registered with the Pharmacists Council of Zimbabwe.
             </p>
           </div>
         </div>

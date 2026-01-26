@@ -1,4 +1,4 @@
-// constants/about.ts - CORRECTED VERSION
+// constants/about.ts - COMPLIANT VERSION
 
 export interface TeamMember {
   id: string;
@@ -24,7 +24,7 @@ export interface Stat {
   label: string;
 }
 
-export interface WhyChooseUs {
+export interface PracticeService {
   id: string;
   title: string;
   description: string;
@@ -37,15 +37,14 @@ export const ABOUT_DATA = {
   },
   
   stats: [
-    { id: "years", value: "17+", label: "Years in practice" },
-    { id: "locations", value: "5", label: "Locations" },
-    { id: "doctors", value: "4", label: "Optometrists" }
-    // REMOVED: "Patients" stat as it could be seen as promotional
+    { id: "years", value: "16+", label: "Years in practice" },
+    { id: "locations", value: "5", label: "Clinic locations" },
+    { id: "practitioners", value: "4", label: "Qualified practitioners" }
   ],
   
   story: "Link Opticians was established in 2008. The practice provides optometry services.",
   
-  whyChooseUs: [
+  practiceServices: [
     {
       id: "comprehensive",
       title: "Eye Examinations",
@@ -84,7 +83,6 @@ export const ABOUT_DATA = {
     clinicInterior: "/assets/images/clinic-interior.png",
     examRoom: "/assets/images/eye-exam-room.png",
     communityEvent: "/assets/images/community-event.png"
-    // REMOVED: founder image unless properly verified
   }
 };
 
@@ -93,7 +91,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "richard-maveneka",
     name: "Dr. Richard Maveneka",
     role: "Optometrist",
-    experience: "17 years",
+    experience: "16 years in practice",
     specialty: "Pediatric optometry services",
     image: "/assets/images/dr-sarah.jpg",
     bio: "Experience with children's vision services.",
@@ -103,7 +101,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "taylor-mutaiwa",
     name: "Dr. Taylor Mutaiwa",
     role: "Optometrist",
-    experience: "8 years",
+    experience: "8 years in practice",
     specialty: "Dry eye services",
     image: "/assets/images/dr-chen.jpg",
     bio: "Experience with contact lens services.",
@@ -113,7 +111,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "emily-rodriguez",
     name: "Dr. Emily Rodriguez",
     role: "Optometrist",
-    experience: "8 years",
+    experience: "8 years in practice",
     specialty: "Low vision services",
     image: "/assets/images/dr-emily.jpg",
     bio: "Experience with vision impairment services.",
@@ -123,7 +121,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "lisa-thompson",
     name: "Lisa Thompson",
     role: "Optical Manager",
-    experience: "10 years",
+    experience: "10 years in practice",
     specialty: "Frame services",
     image: "/assets/images/lisa-optical.jpg",
     bio: "Experience with frame options.",
@@ -148,7 +146,7 @@ export const VALUES: Value[] = [
     id: "communication",
     title: "Information Provision",
     description: "Explanation of eye health and service options.",
-    icon: "💬"
+    icon: "📋"
   },
   {
     id: "community",

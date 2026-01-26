@@ -1,4 +1,4 @@
-
+// app\(public)\page.tsx - COMPLIANT VERSION
 
 import Image from "next/image";
 import Link from "next/link";
@@ -24,23 +24,23 @@ export default async function Home({ searchParams }: SearchParamProps) {
         <div className="container my-auto py-12 lg:py-0">
           <div className="max-w-2xl">
             <h1 className="header mb-6">
-              Professional <span className="text-green-500">Eye Care</span>
+              Link <span className="text-green-500">Opticians</span>
             </h1>
             <p className="text-dark-700 mb-6 text-lg">
-              Link Opticians provides optometry services at our clinic locations. Established in 2008.
+              Optometry services available at clinic locations. Established in 2008.
             </p>
             <div className="mb-8 space-y-4">
               <div className="flex items-center gap-3">
                 <div className="size-2 bg-green-500 rounded-full"></div>
-                <span className="text-dark-600">Medical aid claims accepted</span>
+                <span className="text-dark-600">Medical aid claims accepted according to plan coverage</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="size-2 bg-green-500 rounded-full"></div>
-                <span className="text-dark-600">Optometry services available</span>
+                <span className="text-dark-600">Optometry services by qualified practitioners</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="size-2 bg-green-500 rounded-full"></div>
-                <span className="text-dark-600">Lens laboratory at our clinic</span>
+                <span className="text-dark-600">Lens laboratory at clinic locations</span>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -51,7 +51,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
               </Button>
               <Button className="shad-gray-btn" size="lg" asChild>
                 <Link href="/services">
-                  Our Services
+                  Services Information
                 </Link>
               </Button>
             </div>
@@ -84,14 +84,14 @@ export default async function Home({ searchParams }: SearchParamProps) {
             </div>
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🏥</div>
-              <h2 className="text-18-bold mb-2">Medical Aid & Cash</h2>
+              <h2 className="text-18-bold mb-2">Payment Options</h2>
               <p className="text-dark-600">
                 Medical aid claims and cash payment accepted
               </p>
             </div>
             <div className="text-center p-6">
-              <div className="text-4xl mb-4">📍</div>
-              <h2 className="text-18-bold mb-2">Multiple Locations</h2>
+              <div className="text-4xl mb-4">⚕️</div>
+              <h2 className="text-18-bold mb-2">Clinic Locations</h2>
               <p className="text-dark-600">
                 Clinics in Harare, Chipinge, and Chiredzi
               </p>
@@ -118,7 +118,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           
           <div className="text-center mt-12">
             <Button className="shad-gray-btn" asChild>
-              <Link href="/services">View All Services</Link>
+              <Link href="/services">Service Information</Link>
             </Button>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h2 className="sub-header mb-6">
-                Community <span className="text-green-500">Eye Health</span>
+                Community <span className="text-green-500">Services</span>
               </h2>
               <p className="text-dark-700 mb-6">
                 School eye health services and mobile eye care services
@@ -151,7 +151,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
               </ul>
               <div className="mt-8">
                 <Button className="shad-gray-btn" asChild>
-                  <Link href="/community">Community Services</Link>
+                  <Link href="/community">Community Services Information</Link>
                 </Button>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <div className="text-center mb-12">
             <h2 className="sub-header mb-4">Available Products</h2>
             <p className="text-dark-700 max-w-2xl mx-auto">
-              Frames, lenses, sunglasses and accessories
+              Frames, lenses, sunglasses and accessories available at branches
             </p>
           </div>
           
@@ -205,7 +205,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             </div>
             <div className="text-center p-6">
               <div className="size-16 bg-dark-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🧰</span>
+                <span className="text-2xl">🧴</span>
               </div>
               <h3 className="text-16-semibold mb-2">Accessories</h3>
               <p className="text-dark-600 text-sm">Eyewear accessories</p>
@@ -214,7 +214,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           
           <div className="text-center mt-12">
             <Button className="shad-gray-btn" asChild>
-              <Link href="/products">View Products</Link>
+              <Link href="/products">Product Information</Link>
             </Button>
           </div>
         </div>
@@ -226,14 +226,14 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <div className="bg-dark-300 border border-dark-500 rounded-2xl p-12">
             <h2 className="sub-header mb-6">Eye Examinations</h2>
             <p className="text-dark-700 mb-8 text-lg max-w-2xl mx-auto">
-              Appointments available. Medical aid claims and cash payment accepted.
+              Appointments available. Medical aid claims and cash payment accepted according to plan coverage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="shad-gray-btn px-8 py-6 text-lg" asChild>
                 <Link href="/book">Book Appointment</Link>
               </Button>
               <Button className="shad-gray-btn px-8 py-6 text-lg" asChild>
-                <Link href="/locations">Our Locations</Link>
+                <Link href="/locations">Location Information</Link>
               </Button>
             </div>
             <div className="mt-8 pt-8 border-t border-dark-500">

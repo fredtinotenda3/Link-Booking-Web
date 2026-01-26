@@ -1,4 +1,3 @@
-// app\(public)\contact\page.tsx - CORRECTED VERSION
 
 import Image from "next/image";
 import Link from "next/link";

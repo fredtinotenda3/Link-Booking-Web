@@ -1,4 +1,4 @@
-// components\ui\forms\SimpleBookingForm.tsx - CORRECTED VERSION
+// components\ui\forms\SimpleBookingForm.tsx - FIXED BUTTON PLACEMENT
 
 "use client";
 
@@ -99,7 +99,7 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
               fieldType={FormFieldType.INPUT}
               control={form.control}
               name="patientEmail"
-              label="Email Address"
+              label="Email Address (optional)"
               placeholder="Enter email address"
               iconSrc="/assets/icons/email.svg"
             />
@@ -117,23 +117,25 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
             fieldType={FormFieldType.TEXTAREA}
             control={form.control}
             name="reason"
-            label="Reason for Appointment"
-            placeholder="Describe reason for appointment (optional)"
+            label="Reason for Appointment (optional)"
+            placeholder="Describe reason for appointment"
           />
         </div>
 
+        {/* Submit Button - MOVED HERE to be right after the reason field */}
+        <SubmitButton isLoading={isLoading}>
+          Submit Appointment Request
+        </SubmitButton>
+
+        {/* Privacy Note - MOVED AFTER the submit button */}
         <div className="p-4 bg-dark-300 rounded-lg">
           <p className="text-sm text-dark-600 mb-2">
             <strong>Privacy Note:</strong> Your information is collected for appointment purposes only.
           </p>
           <p className="text-sm text-dark-600">
-            Appointment confirmations will be sent via SMS or email.
+            Appointment confirmations will be sent via SMS or email during business hours.
           </p>
         </div>
-
-        <SubmitButton isLoading={isLoading}>
-          Submit Appointment Request
-        </SubmitButton>
 
         <p className="text-12-regular text-dark-600 text-center">
           We will contact you to confirm your appointment details.

@@ -1,4 +1,3 @@
-// app\(public)\about\page.tsx - CORRECTED VERSION
 
 import Image from "next/image";
 import Link from "next/link";
@@ -59,9 +58,9 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-24-bold">Services Information</h3>
+              <h3 className="text-24-bold">Practice Services</h3>
               <ul className="space-y-4">
-                {ABOUT_DATA.whyChooseUs.map((item, index) => (
+                {ABOUT_DATA.practiceServices.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="mt-1 size-2 bg-dark-600 rounded-full"></div>
                     <div>

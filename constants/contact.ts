@@ -1,4 +1,4 @@
-// constants/contact.ts - CORRECTED VERSION
+// constants/contact.ts - COMPLIANT VERSION
 
 export interface FAQ {
   id: string;
@@ -28,9 +28,9 @@ export const CONTACT_DATA = {
     {
       id: "phone",
       title: "Phone Information",
-      details: "Contact: +263 123 456 789\nEmergency: +263 77 340 7464",
+      details: "Contact: +263 242 700 000\nEmergency: +263 77 340 7464",
       icon: "/assets/icons/phone.svg",
-      action: { type: "tel", value: "+263123456789" }
+      action: { type: "tel", value: "+263242700000" }
     },
     {
       id: "email",
@@ -51,11 +51,11 @@ export const CONTACT_DATA = {
     title: "Main Clinic Location",
     address: "Shop 15 & 16 Robinson House, Cnr Angwa / K.Nkrumah, Harare, Zimbabwe",
     placeholder: "Location information available",
-    directionsUrl: "https://maps.google.com"
+    directionsUrl: "https://maps.google.com/?q=Robinson+House+Angwa+Harare"
   },
   
   phone: {
-    main: "+263 123 456 789",
+    main: "+263 242 700 000",
     emergency: "+263 77 340 7464"
   },
   

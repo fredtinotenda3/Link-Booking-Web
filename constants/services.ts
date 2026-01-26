@@ -1,4 +1,4 @@
-// constants/services.ts - CORRECTED VERSION
+// constants/services.ts - COMPLIANT VERSION
 
 export interface Service {
   id: string;
@@ -215,9 +215,10 @@ export const PAYMENT_OPTIONS = [
   "Medical Aid Claims"
 ];
 
-export const COST_SAVINGS = [
+export const PRACTICE_FEATURES = [
   "In-house laboratory for lens manufacturing",
-  "Direct supplier relationships",
   "Direct billing for insured patients",
-  "Cash payment option available"
+  "Cash payment option available",
+  "Frame repair services available",
+  "Warranty information available"
 ];
