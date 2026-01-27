@@ -33,15 +33,46 @@ export const AppointmentModal = ({
     window.location.reload();
   };
 
+  // Determine if button should be disabled
+  const isDisabled = () => {
+    if (!appointment) return false;
+    
+    if (type === "schedule") {
+      // Disable schedule button if already scheduled
+      return appointment.status === "schedule";
+    } else if (type === "cancel") {
+      // Disable cancel button if already cancelled
+      return appointment.status === "cancelled";
+    }
+    return false;
+  };
+
+  const getButtonText = () => {
+    if (isDisabled()) {
+      if (type === "schedule") return "Scheduled";
+      if (type === "cancel") return "Cancelled";
+    }
+    return type;
+  };
+
+  const getButtonVariant = () => {
+    if (isDisabled()) {
+      return "outline";
+    }
+    return "ghost";
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="ghost"
-          className={`capitalize ${type === "schedule" && "text-green-500"}`}
-          disabled={isSubmitting}
+          variant={getButtonVariant()}
+          className={`capitalize ${type === "schedule" && "text-green-500"} ${
+            isDisabled() ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={isDisabled() || isSubmitting}
         >
-          {type}
+          {getButtonText()}
         </Button>
       </DialogTrigger>
       <DialogContent className="shad-dialog sm:max-w-md">

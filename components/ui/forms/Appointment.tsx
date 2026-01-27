@@ -39,10 +39,33 @@ export const AppointmentForm = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const AppointmentFormValidation = getAppointmentSchema(type);
+  // For schedule action, create a simplified schema
+  const ScheduleAppointmentSchema = z.object({
+    primaryPhysician: z.string().min(1, "Please select a doctor"),
+    schedule: z.coerce.date(),
+  });
 
-  const form = useForm<z.infer<typeof AppointmentFormValidation>>({
-    resolver: zodResolver(AppointmentFormValidation),
+  const CancelAppointmentSchema = z.object({
+    cancellationReason: z
+      .string()
+      .min(2, "Reason must be at least 2 characters")
+      .max(500, "Reason must be at most 500 characters"),
+  });
+
+  const getSchema = () => {
+    switch (type) {
+      case "schedule":
+        return ScheduleAppointmentSchema;
+      case "cancel":
+        return CancelAppointmentSchema;
+      case "create":
+      default:
+        return getAppointmentSchema(type);
+    }
+  };
+
+  const form = useForm<z.infer<ReturnType<typeof getSchema>>>({
+    resolver: zodResolver(getSchema()),
     defaultValues: {
       primaryPhysician: appointment ? appointment?.primaryPhysician : "",
       schedule: appointment
@@ -52,13 +75,12 @@ export const AppointmentForm = ({
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
       branchId: appointment?.branchId || "",
-      // ADDED: Include status in default values
       status: appointment?.status || (type === "cancel" ? "cancelled" : type === "schedule" ? "schedule" : "pending"),
     },
   });
 
   const onSubmit = async (
-    values: z.infer<typeof AppointmentFormValidation>
+    values: z.infer<ReturnType<typeof getSchema>>
   ) => {
     setIsLoading(true);
     if (setIsSubmitting) setIsSubmitting(true);
@@ -66,7 +88,7 @@ export const AppointmentForm = ({
     let status: Status;
     switch (type) {
       case "schedule":
-        status = "schedule"; // FIXED: Use "schedule" not "scheduled"
+        status = "schedule";
         break;
       case "cancel":
         status = "cancelled";
@@ -80,12 +102,12 @@ export const AppointmentForm = ({
         const appointmentData = {
           userId: "",
           patient: patientId,
-          primaryPhysician: values.primaryPhysician,
-          schedule: new Date(values.schedule),
-          reason: values.reason!,
+          primaryPhysician: (values as any).primaryPhysician || "",
+          schedule: new Date((values as any).schedule),
+          reason: (values as any).reason || "",
           status: status,
-          note: values.note,
-          branchId: values.branchId,
+          note: (values as any).note || "",
+          branchId: (values as any).branchId || "",
         };
 
         const newAppointment = await createAppointment(appointmentData);
@@ -101,11 +123,17 @@ export const AppointmentForm = ({
         const appointmentToUpdate = {
           appointmentId: appointment?.$id!,
           appointment: {
-            primaryPhysician: values.primaryPhysician || appointment?.primaryPhysician || "",
-            schedule: new Date(values.schedule),
+            primaryPhysician: type === "schedule" 
+              ? (values as any).primaryPhysician || appointment?.primaryPhysician || ""
+              : appointment?.primaryPhysician || "",
+            schedule: type === "schedule" 
+              ? new Date((values as any).schedule)
+              : new Date(appointment?.schedule || Date.now()),
             status: status,
-            cancellationReason: values.cancellationReason,
-            branchId: appointment?.branchId || values.branchId || "",
+            cancellationReason: type === "cancel" 
+              ? (values as any).cancellationReason 
+              : appointment?.cancellationReason || "",
+            branchId: appointment?.branchId || "",
           },
           type,
         };
@@ -159,7 +187,56 @@ export const AppointmentForm = ({
           </section>
         )}
 
-        {type !== "cancel" && (
+        {/* For schedule action - Show only doctor and date/time */}
+        {type === "schedule" && (
+          <>
+            <CustomFormField
+              fieldType={FormFieldType.SELECT}
+              control={form.control}
+              name="primaryPhysician"
+              label="Doctor"
+              placeholder="Select doctor"
+            >
+              {Doctors.map((doctor, i) => (
+                <SelectItem key={doctor.name + i} value={doctor.name}>
+                  <div className="flex cursor-pointer items-center gap-2">
+                    <Image
+                      src={doctor.image}
+                      width={32}
+                      height={32}
+                      alt="doctor"
+                      className="rounded-full border border-dark-500"
+                    />
+                    <p>{doctor.name}</p>
+                  </div>
+                </SelectItem>
+              ))}
+            </CustomFormField>
+
+            <CustomFormField
+              fieldType={FormFieldType.DATE_PICKER}
+              control={form.control}
+              name="schedule"
+              label="Appointment Date & Time"
+              showTimeSelect
+              dateFormat="MM/dd/yyyy - h:mm aa"
+            />
+          </>
+        )}
+
+        {/* For cancel action - Show only cancellation reason */}
+        {type === "cancel" && (
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="cancellationReason"
+            label="Cancellation Reason"
+            placeholder="Reason for cancelling appointment"
+          />
+        )}
+
+        {/* For create action - Show all fields (original behavior) */}
+        {type === "create" && (
           <>
             <CustomFormField
               fieldType={FormFieldType.SELECT}
@@ -203,21 +280,16 @@ export const AppointmentForm = ({
               name="schedule"
               label="Appointment Date"
               showTimeSelect
-              dateFormat="MM/dd/yyyy  -  h:mm aa"
+              dateFormat="MM/dd/yyyy - h:mm aa"
             />
 
-            <div
-              className={`flex flex-col gap-6  ${
-                type === "create" && "xl:flex-row"
-              }`}
-            >
+            <div className="flex flex-col gap-6">
               <CustomFormField
                 fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
                 name="reason"
                 label="Reason for Appointment"
                 placeholder="Annual eye examination"
-                disabled={type === "schedule"}
               />
 
               <CustomFormField
@@ -226,20 +298,9 @@ export const AppointmentForm = ({
                 name="note"
                 label="Additional Information"
                 placeholder="Appointment preferences"
-                disabled={type === "schedule"}
               />
             </div>
           </>
-        )}
-
-        {type === "cancel" && (
-          <CustomFormField
-            fieldType={FormFieldType.TEXTAREA}
-            control={form.control}
-            name="cancellationReason"
-            label="Cancellation Reason"
-            placeholder="Reason for cancelling appointment"
-          />
         )}
 
         <SubmitButton

@@ -97,31 +97,24 @@ export const columns: ColumnDef<EnhancedAppointment>[] = [
     cell: ({ row }) => {
       const appointment = row.original;
 
-      // Only show schedule button if status is pending
-      // Only show cancel button if status is schedule (scheduled)
+      // Always show both schedule and cancel buttons
       return (
-        <div className="flex gap-1">
-          {appointment.status === "pending" && (
-            <AppointmentModal
-              patientId={appointment.patient.$id}
-              appointment={appointment}
-              type="schedule"
-              description="Please confirm the following details to schedule."
-            />
-          )}
-          {appointment.status === "schedule" && (
-            <AppointmentModal
-              patientId={appointment.patient.$id}
-              appointment={appointment}
-              type="cancel"
-              description="Are you sure you want to cancel your appointment?"
-            />
-          )}
-          {(appointment.status === "cancelled" || appointment.status === "pending") && (
-            <span className="text-14-regular text-dark-600 px-4 py-2">
-              No actions available
-            </span>
-          )}
+        <div className="flex gap-2">
+          {/* Schedule Button - always visible, but disabled if already scheduled */}
+          <AppointmentModal
+            patientId={appointment.patient.$id}
+            appointment={appointment}
+            type="schedule"
+            description="Please confirm the following details to schedule."
+          />
+          
+          {/* Cancel Button - always visible, but disabled if already cancelled */}
+          <AppointmentModal
+            patientId={appointment.patient.$id}
+            appointment={appointment}
+            type="cancel"
+            description="Are you sure you want to cancel your appointment?"
+          />
         </div>
       );
     },

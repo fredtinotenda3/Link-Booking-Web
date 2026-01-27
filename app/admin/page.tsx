@@ -33,7 +33,7 @@ const Admin = async () => {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-[5%] py-4">
           <Link href="/">
             <Image
-              src="/assets/icons/logo-full.svg"
+              src="/assets/icons/logo-icon.svg"
               height={1000}
               width={1000}
               alt="Link Opticians"
