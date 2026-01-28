@@ -1,5 +1,3 @@
-// components\ProgramCard.tsx - CORRECTED VERSION
-
 import Image from "next/image";
 import { OutreachProgram } from "@/constants/community";
 
@@ -25,7 +23,7 @@ export const ProgramCard = ({ program }: ProgramCardProps) => {
         <p className="text-dark-600 text-sm mb-4">{program.description}</p>
         
         <div className="mb-4">
-          <h4 className="text-12-semibold text-dark-700 mb-2">Services Information:</h4>
+          <h4 className="text-12-semibold text-dark-700 mb-2">Services Available:</h4>
           <div className="flex flex-wrap gap-2">
             {program.services.slice(0, 3).map((service, idx) => (
               <span 
@@ -40,7 +38,7 @@ export const ProgramCard = ({ program }: ProgramCardProps) => {
         
         <div className="flex items-center justify-between text-sm">
           <div>
-            <p className="text-dark-700 font-medium">Service Information:</p>
+            <p className="text-dark-700 font-medium">Service Details:</p>
             <p className="text-dark-600">{program.impact}</p>
           </div>
           <div className="text-right">

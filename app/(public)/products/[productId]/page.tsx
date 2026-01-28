@@ -42,15 +42,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 <h1 id="product-heading" className="header mb-6">{product.name}</h1>
                 <p className="text-dark-700 text-lg mb-8">{product.description}</p>
                 
-                <div className="flex flex-wrap gap-6 mb-8">
-                  <div>
-                    <p className="text-sm text-dark-600">Cash Amount</p>
-                    <p className="text-24-bold text-green-500">{product.priceRange.cash}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-dark-600">With Medical Aid</p>
-                    <p className="text-24-bold">{product.priceRange.insured}</p>
-                  </div>
+                <div className="p-4 bg-dark-300 rounded-lg mb-8">
+                  <p className="text-dark-600">
+                    Consultation required for product information and fitting.
+                  </p>
                 </div>
                 
                 <div className="flex flex-wrap gap-4">
@@ -137,7 +132,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   </div>
                   <div className="mt-6 p-4 bg-dark-300 rounded-lg">
                     <p className="text-sm text-dark-600">
-                      Visit our clinics for product information. Medical aid claims accepted according to plan coverage.
+                      Visit our clinics for product information. Consultation required for fitting.
                     </p>
                   </div>
                 </div>
@@ -217,9 +212,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                     </div>
                     <h3 className="text-18-bold mb-2">{related.name}</h3>
                     <p className="text-dark-600 text-sm mb-4 line-clamp-2">{related.description}</p>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-green-500 font-semibold">{related.priceRange.cash}</span>
-                      <span className="text-sm text-dark-600">or {related.priceRange.insured}</span>
+                    <div className="p-3 bg-dark-300 rounded-lg mb-4">
+                      <p className="text-sm text-dark-600">
+                        Consultation required
+                      </p>
                     </div>
                     <Button className="shad-primary-btn w-full" size="sm" asChild>
                       <Link href={`/products/${related.id}`}>

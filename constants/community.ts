@@ -1,5 +1,3 @@
-// constants/community.ts - COMPLIANT VERSION
-
 export interface OutreachProgram {
   id: string;
   title: string;
@@ -34,47 +32,47 @@ export const COMMUNITY_PROGRAMS: OutreachProgram[] = [
   {
     id: "school-screenings",
     title: "School Eye Health Services",
-    description: "Vision screening services for school children",
+    description: "Information about vision screening services for school children",
     target: ["Primary schools", "Secondary schools", "Rural schools"],
     services: ["Basic vision screening", "Myopia detection", "Referral for treatment", "Eye health information"],
-    frequency: "Termly services",
+    frequency: "Services conducted during school terms",
     image: "/assets/images/community/school-screening.png",
-    impact: "Vision screening services provided"
+    impact: "Vision screening services have been provided"
   },
   {
     id: "senior-screenings",
     title: "Vision Screening Services for Seniors",
-    description: "Eye health services for elderly in community centers",
+    description: "Information about eye health services for elderly individuals in community centers",
     target: ["Senior citizens", "Retirement homes", "Community centers"],
     services: ["Cataract screening", "Glaucoma testing", "Presbyopia assessment", "Low vision evaluation"],
-    frequency: "Monthly community services",
+    frequency: "Monthly community services available",
     image: "/assets/images/community/senior-screening.png",
-    impact: "Senior eye health services provided"
+    impact: "Eye health services for seniors have been provided"
   },
   {
     id: "diabetes-awareness",
     title: "Diabetes Eye Health Information",
-    description: "Diabetic retinopathy screening and information",
-    target: ["Diabetes patients", "Community health centers", "Workplaces"],
+    description: "Information about diabetic retinopathy screening services",
+    target: ["Individuals with diabetes", "Community health centers", "Workplaces"],
     services: ["Retinal photography", "Diabetes eye health information", "Referral to clinics", "Follow-up care"],
-    frequency: "Quarterly services",
+    frequency: "Quarterly services available",
     image: "/assets/images/community/diabetes-screening.png",
-    impact: "Diabetes eye health services provided"
+    impact: "Diabetes eye health services have been provided"
   },
   {
     id: "eyewear-donation",
     title: "Eyewear Services",
-    description: "Eyewear services information",
+    description: "Information about eyewear services available",
     target: ["Families", "Rural communities", "School children"],
     services: ["Basic prescription glasses", "Reading glasses", "Sunglasses for UV protection"],
-    frequency: "Ongoing services",
+    frequency: "Ongoing services available",
     image: "/assets/images/community/eyewear-donation.png",
-    impact: "Eyewear services provided"
+    impact: "Eyewear services have been provided"
   }
 ];
 
 export const MOBILE_UNIT_DETAILS = {
-  description: "Mobile eye care unit services information.",
+  description: "Information about mobile eye care unit services.",
   features: [
     "Digital retinal camera",
     "Auto-refractor",
@@ -125,7 +123,7 @@ export const CORPORATE_PARTNERS: CorporatePartner[] = [
     id: "tongaat",
     name: "Tongaat Hulletts",
     industry: "Sugar Production",
-    program: "Industrial eye safety services",
+    program: "Industrial eye safety services provided",
     employees: 25000,
     image: "/assets/images/community/tongaat-partner.png"
   },
@@ -133,7 +131,7 @@ export const CORPORATE_PARTNERS: CorporatePartner[] = [
     id: "tea-estate",
     name: "Eastern Highlands Tea Estates",
     industry: "Agriculture",
-    program: "Farm worker eye health services",
+    program: "Farm worker eye health services provided",
     employees: 5000,
     image: "/assets/images/community/tea-estate.png"
   }
@@ -141,7 +139,7 @@ export const CORPORATE_PARTNERS: CorporatePartner[] = [
 
 export const COMMUNITY_STATS = [
   { value: "16+", label: "Years of service" },
-  { value: "Schools", label: "Schools served" },
-  { value: "Communities", label: "Communities served" },
+  { value: "Multiple", label: "Schools served" },
+  { value: "Various", label: "Communities served" },
   { value: "5", label: "Districts served" }
 ];

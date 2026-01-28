@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,18 +14,17 @@ export default function LocationsPage() {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h1 className="header mb-6">
-                Location <span className="text-green-500">Information</span>
+                Our <span className="text-green-500">Locations</span>
               </h1>
               <p className="text-dark-700 text-lg mb-8">
-                Clinic location information across Zimbabwe and mobile eye care unit services. 
-                Established in 2008.
+                Link Opticians operates several clinic locations across Zimbabwe. Established in 2008.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button className="shad-gray-btn" asChild>
-                  <Link href="#mobile-unit">Mobile Unit Information</Link>
+                  <Link href="#mobile-unit">Mobile Unit Details</Link>
                 </Button>
                 <Button className="shad-gray-btn" asChild>
-                  <Link href="/contact">Contact Information</Link>
+                  <Link href="/contact">Contact Us</Link>
                 </Button>
               </div>
             </div>
@@ -38,11 +35,11 @@ export default function LocationsPage() {
                   src="/assets/images/zimbabwe-map.png"
                   width={800}
                   height={600}
-                  alt="Location information across Zimbabwe"
+                  alt="Map showing Link Opticians locations in Zimbabwe"
                   className="w-full h-auto"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark-400 to-transparent p-6">
-                  <p className="text-white font-semibold">Serving since 2008</p>
+                  <p className="text-white font-semibold">Operating since 2008</p>
                 </div>
               </div>
             </div>
@@ -60,27 +57,27 @@ export default function LocationsPage() {
             </div>
             <div className="text-center p-4">
               <p className="text-32-bold text-green-500">16+</p>
-              <p className="text-dark-600 text-sm">Years of service</p>
+              <p className="text-dark-600 text-sm">Years in operation</p>
             </div>
             <div className="text-center p-4">
               <p className="text-32-bold text-green-500">1</p>
               <p className="text-dark-600 text-sm">Mobile unit</p>
             </div>
             <div className="text-center p-4">
-              <p className="text-32-bold text-green-500">Areas</p>
+              <p className="text-32-bold text-green-500">Multiple</p>
               <p className="text-dark-600 text-sm">Service areas</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Clinic Location Information */}
+      {/* Clinic Locations */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-[5%]">
           <div className="text-center mb-12">
-            <h2 className="sub-header mb-4">Clinic Location Information</h2>
+            <h2 className="sub-header mb-4">Our Clinic Locations</h2>
             <p className="text-dark-700 max-w-2xl mx-auto">
-              Optometry services at clinic locations.
+              Optometry services are available at these clinic locations.
             </p>
           </div>
           
@@ -92,20 +89,20 @@ export default function LocationsPage() {
         </div>
       </section>
 
-      {/* Mobile Unit Information */}
+      {/* Mobile Unit Section */}
       <section id="mobile-unit" className="py-16 bg-dark-300">
         <div className="mx-auto max-w-7xl px-[5%]">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h2 className="sub-header mb-6">
-                Mobile <span className="text-green-500">Eye Care</span> Information
+                Mobile <span className="text-green-500">Eye Care</span> Unit
               </h2>
               <p className="text-dark-700 mb-6">
                 {MOBILE_UNIT_DATA.description}
               </p>
               
               <div className="mb-8">
-                <h3 className="text-16-semibold mb-4">Services Information:</h3>
+                <h3 className="text-16-semibold mb-4">Available Services:</h3>
                 <ul className="space-y-3">
                   {MOBILE_UNIT_DATA.services.map((service, index) => (
                     <li key={index} className="flex items-center gap-3">
@@ -117,7 +114,7 @@ export default function LocationsPage() {
               </div>
               
               <div className="mb-8">
-                <h3 className="text-16-semibold mb-4">Service Areas:</h3>
+                <h3 className="text-16-semibold mb-4">Coverage Areas:</h3>
                 <div className="flex flex-wrap gap-2">
                   {MOBILE_UNIT_DATA.coverage.map((area, index) => (
                     <span 
@@ -132,14 +129,14 @@ export default function LocationsPage() {
               
               <div className="space-y-4">
                 <p className="text-dark-700">
-                  <strong>Schedule Information:</strong> {MOBILE_UNIT_DATA.schedule}
+                  <strong>Schedule:</strong> {MOBILE_UNIT_DATA.schedule}
                 </p>
                 <p className="text-dark-700">
-                  <strong>Contact Information:</strong> {MOBILE_UNIT_DATA.contact}
+                  <strong>Contact:</strong> {MOBILE_UNIT_DATA.contact}
                 </p>
                 <Button className="shad-gray-btn" asChild>
                   <Link href="/contact?subject=mobile-unit">
-                    Mobile Unit Information
+                    Inquire About Mobile Unit
                   </Link>
                 </Button>
               </div>
@@ -151,7 +148,7 @@ export default function LocationsPage() {
                   src={MOBILE_UNIT_DATA.image}
                   width={600}
                   height={500}
-                  alt="Mobile eye care unit service"
+                  alt="Mobile eye care unit"
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-400/80 to-transparent flex items-end">
@@ -165,20 +162,20 @@ export default function LocationsPage() {
         </div>
       </section>
 
-      {/* Location Comparison Information */}
+      {/* Location Comparison Table */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-[5%]">
-          <h2 className="sub-header text-center mb-12">Location Information</h2>
+          <h2 className="sub-header text-center mb-12">Location Details</h2>
           
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-dark-400">
                   <th className="text-left p-4 border border-dark-500">Location</th>
-                  <th className="text-left p-4 border border-dark-500">Services Information</th>
-                  <th className="text-left p-4 border border-dark-500">Service Information</th>
+                  <th className="text-left p-4 border border-dark-500">Specialties</th>
+                  <th className="text-left p-4 border border-dark-500">Services</th>
                   <th className="text-left p-4 border border-dark-500">Hours</th>
-                  <th className="text-left p-4 border border-dark-500">Parking Information</th>
+                  <th className="text-left p-4 border border-dark-500">Parking</th>
                 </tr>
               </thead>
               <tbody>
@@ -217,20 +214,20 @@ export default function LocationsPage() {
         </div>
       </section>
 
-      {/* Information Section */}
+      {/* Contact Section */}
       <section className="py-16">
         <div className="mx-auto max-w-4xl px-[5%] text-center">
           <div className="bg-dark-400 border border-dark-500 rounded-2xl p-12">
-            <h2 className="sub-header mb-6">Location Information</h2>
+            <h2 className="sub-header mb-6">Find a Location</h2>
             <p className="text-dark-700 mb-8 text-lg max-w-2xl mx-auto">
-              Location information and contact details.
+              Contact us for more details about our locations and services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="shad-gray-btn px-8 py-6 text-lg" asChild>
-                <Link href="/contact">Contact Information</Link>
+                <Link href="/contact">Contact Us</Link>
               </Button>
               <Button className="shad-gray-btn px-8 py-6 text-lg" asChild>
-                <Link href="/book">Appointment Information</Link>
+                <Link href="/book">Book Appointment</Link>
               </Button>
             </div>
           </div>

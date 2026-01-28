@@ -18,7 +18,7 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
   },
   {
     id: "services",
-    label: "Services & Pricing",
+    label: "Services",
     href: "/services",
     description: "View our services with transparent pricing"
   },

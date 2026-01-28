@@ -1,10 +1,8 @@
-// app\(public)\book\page.tsx - ALIGNED VERSION
 import { Suspense } from "react";
 import { SimpleBookingForm } from "@/components/ui/forms/SimpleBookingForm";
 import { getAllBranches } from "@/lib/actions/branch.actions";
 import Image from "next/image";
 import Link from "next/link";
-
 
 export default async function BookPage() {
   // Fetch active branches for the booking form
@@ -12,7 +10,6 @@ export default async function BookPage() {
 
   return (
     <div className="min-h-screen">
-   
       <main className="py-8 md:py-16">
         <div className="mx-auto max-w-7xl px-[5%]">
           <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -31,7 +28,7 @@ export default async function BookPage() {
                 <div className="mb-8 space-y-4">
                   <h1 className="header">Appointment Booking</h1>
                   <p className="text-dark-700">
-                    Schedule an appointment for optometry services. 
+                    Schedule an appointment for optometry services.
                     We will contact you during business hours to confirm details.
                   </p>
                 </div>
@@ -45,11 +42,11 @@ export default async function BookPage() {
 
               <div className="mt-6 p-4 bg-dark-300 rounded-lg">
                 <p className="text-sm text-dark-600 mb-2">
-                  <strong>Emergency Eye Care:</strong> For eye injuries, sudden vision loss, 
+                  <strong>Emergency Eye Care:</strong> For eye injuries, sudden vision loss,
                   or severe eye pain, call our emergency line: <span className="text-green-500">+263 77 340 7464</span>
                 </p>
                 <p className="text-sm text-dark-600">
-                  Your information is collected for appointment purposes. By booking, 
+                  Your information is collected for appointment purposes. By booking,
                   you acknowledge our <Link href="/contact" className="text-green-500 underline">Privacy Notice</Link>.
                 </p>
               </div>
@@ -67,8 +64,8 @@ export default async function BookPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-400/60 to-transparent flex items-end">
                   <div className="p-6 text-white">
-                    <p className="text-18-bold">Professional Eye Care</p>
-                    <p className="text-sm opacity-90">Comprehensive eye examinations with modern equipment</p>
+                    <p className="text-18-bold">Eye Care Services</p>
+                    <p className="text-sm opacity-90">Comprehensive eye examinations</p>
                   </div>
                 </div>
               </div>
@@ -80,8 +77,8 @@ export default async function BookPage() {
                       <span className="text-lg">👁️</span>
                     </div>
                     <div>
-                      <p className="text-14-semibold">Digital Imaging</p>
-                      <p className="text-12-regular text-dark-600">Advanced diagnostic equipment</p>
+                      <p className="text-14-semibold">Eye Examinations</p>
+                      <p className="text-12-regular text-dark-600">Comprehensive assessments</p>
                     </div>
                   </div>
                 </div>
@@ -92,8 +89,8 @@ export default async function BookPage() {
                       <span className="text-lg">🕒</span>
                     </div>
                     <div>
-                      <p className="text-14-semibold">Flexible Hours</p>
-                      <p className="text-12-regular text-dark-600">Weekday and Saturday appointments</p>
+                      <p className="text-14-semibold">Practice Hours</p>
+                      <p className="text-12-regular text-dark-600">Weekday and Saturday appointments available</p>
                     </div>
                   </div>
                 </div>
@@ -102,7 +99,6 @@ export default async function BookPage() {
           </div>
         </div>
       </main>
-    
     </div>
   );
 }

@@ -1,6 +1,4 @@
-// components\PricingTable.tsx - CORRECTED VERSION
-
-import { SERVICE_PRICING } from "@/constants/services";
+// components\PricingTable.tsx - COMPLIANT VERSION
 
 export const PricingTable = () => {
   return (
@@ -9,43 +7,72 @@ export const PricingTable = () => {
         <thead>
           <tr className="bg-dark-400">
             <th className="text-left p-4 border border-dark-500">Service</th>
-            <th className="text-left p-4 border border-dark-500">Cash Amount</th>
-            <th className="text-left p-4 border border-dark-500">Medical Aid Amount</th>
-            <th className="text-left p-4 border border-dark-500">Components</th>
+            <th className="text-left p-4 border border-dark-500">Consultation Required</th>
           </tr>
         </thead>
         <tbody>
-          {SERVICE_PRICING.map((service) => (
-            <tr key={service.id} className="hover:bg-dark-400/50">
-              <td className="p-4 border border-dark-500">
-                <div className="font-semibold">{service.serviceName}</div>
-                {service.notes && (
-                  <div className="text-sm text-dark-600">{service.notes}</div>
-                )}
-              </td>
-              <td className="p-4 border border-dark-500">
-                <div className="font-semibold">{service.cashPrice}</div>
-                <div className="text-xs text-dark-600">Cash payment</div>
-              </td>
-              <td className="p-4 border border-dark-500">
-                <div className="font-semibold">{service.insuredPrice}</div>
-                <div className="text-xs text-dark-600">Medical aid payment</div>
-              </td>
-              <td className="p-4 border border-dark-500">
-                <div className="space-y-1">
-                  {service.includes?.map((item, idx) => (
-                    <div key={idx} className="text-sm text-dark-600">• {item}</div>
-                  ))}
-                </div>
-              </td>
-            </tr>
-          ))}
+          <tr className="hover:bg-dark-400/50">
+            <td className="p-4 border border-dark-500">
+              <div className="font-semibold">Comprehensive Eye Examination</div>
+            </td>
+            <td className="p-4 border border-dark-500">
+              <div className="text-sm text-dark-600">Required</div>
+            </td>
+          </tr>
+          <tr className="hover:bg-dark-400/50">
+            <td className="p-4 border border-dark-500">
+              <div className="font-semibold">Basic Vision Test</div>
+            </td>
+            <td className="p-4 border border-dark-500">
+              <div className="text-sm text-dark-600">Required</div>
+            </td>
+          </tr>
+          <tr className="hover:bg-dark-400/50">
+            <td className="p-4 border border-dark-500">
+              <div className="font-semibold">Contact Lens Fitting</div>
+            </td>
+            <td className="p-4 border border-dark-500">
+              <div className="text-sm text-dark-600">Required</div>
+            </td>
+          </tr>
+          <tr className="hover:bg-dark-400/50">
+            <td className="p-4 border border-dark-500">
+              <div className="font-semibold">Dry Eye Evaluation</div>
+            </td>
+            <td className="p-4 border border-dark-500">
+              <div className="text-sm text-dark-600">Required</div>
+            </td>
+          </tr>
+          <tr className="hover:bg-dark-400/50">
+            <td className="p-4 border border-dark-500">
+              <div className="font-semibold">Pediatric Eye Examination</div>
+            </td>
+            <td className="p-4 border border-dark-500">
+              <div className="text-sm text-dark-600">Required</div>
+            </td>
+          </tr>
+          <tr className="hover:bg-dark-400/50">
+            <td className="p-4 border border-dark-500">
+              <div className="font-semibold">Frame with Lenses</div>
+            </td>
+            <td className="p-4 border border-dark-500">
+              <div className="text-sm text-dark-600">Required</div>
+            </td>
+          </tr>
+          <tr className="hover:bg-dark-400/50">
+            <td className="p-4 border border-dark-500">
+              <div className="font-semibold">Emergency Consultation</div>
+            </td>
+            <td className="p-4 border border-dark-500">
+              <div className="text-sm text-dark-600">Required when needed</div>
+            </td>
+          </tr>
         </tbody>
       </table>
       <div className="mt-4 p-4 bg-dark-300 rounded-lg">
         <p className="text-sm text-dark-600">
-          *Medical aid coverage varies by plan. Amounts are indicative. Contact for current pricing and specific coverage information.
-          Consultation required to determine appropriate services.
+          Consultation required to determine appropriate services. Medical aid coverage varies by plan. 
+          Contact for specific coverage information.
         </p>
       </div>
     </div>

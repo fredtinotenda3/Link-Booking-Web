@@ -1,4 +1,4 @@
-// app\(public)\products\page.tsx - COMPLIANT VERSION
+// app\(public)\products\page.tsx - 
 
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +24,7 @@ export default function ProductsPage() {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button className="shad-gray-btn" asChild>
-                    <Link href="#frames">Frame Information</Link>
+                    <Link href="/locations">Branch Locations</Link>
                   </Button>
                   <Button className="shad-gray-btn" asChild>
                     <Link href="/contact">Contact for Information</Link>
@@ -87,7 +87,7 @@ export default function ProductsPage() {
             <header className="text-center mb-12">
               <h2 id="all-products" className="sub-header mb-4">Product Information</h2>
               <p className="text-dark-700 max-w-2xl mx-auto">
-                Available at branches. Medical aid coverage information available.
+                Available at branches. Consultation required.
               </p>
             </header>
             
@@ -105,7 +105,7 @@ export default function ProductsPage() {
             <header className="text-center mb-12">
               <h2 id="frames-heading" className="sub-header mb-4">Frame Information</h2>
               <p className="text-dark-700 max-w-2xl mx-auto">
-                Frame options available.
+                Frame options available. Consultation required.
               </p>
             </header>
             
@@ -124,7 +124,7 @@ export default function ProductsPage() {
             <header className="text-center mb-12">
               <h2 id="sunglasses-heading" className="sub-header mb-4">Sunglass Information</h2>
               <p className="text-dark-700 max-w-2xl mx-auto">
-                Sunglasses available. Prescription options information available.
+                Sunglass options available. Consultation required.
               </p>
             </header>
             
@@ -143,7 +143,7 @@ export default function ProductsPage() {
             <header className="text-center mb-12">
               <h2 id="contacts-heading" className="sub-header mb-4">Contact Lens Information</h2>
               <p className="text-dark-700 max-w-2xl mx-auto">
-                Contact lens options available.
+                Contact lens options available. Consultation required.
               </p>
             </header>
             
@@ -164,7 +164,7 @@ export default function ProductsPage() {
               <header className="mb-8">
                 <h2 id="products-cta" className="sub-header mb-6">Product Information</h2>
                 <p className="text-dark-700 mb-8 text-lg max-w-2xl mx-auto">
-                  Product viewing at branches. Fitting services information available.
+                  Product viewing at branches. Consultation required for fitting.
                 </p>
               </header>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

@@ -1,4 +1,3 @@
-// app\(public)\booking\confirmation\page.tsx - ALIGNED VERSION
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,6 @@ import { getAppointment } from "@/lib/actions/appointment.actions";
 import { getBranchById } from "@/lib/actions/branch.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
-
 
 export default async function BookingConfirmation({
   searchParams,
@@ -50,7 +48,7 @@ export default async function BookingConfirmation({
               />
             </Link>
             <h1 className="header mb-4">
-              Appointment <span className="text-green-500">Request Submitted</span>
+              Appointment Request Submitted
             </h1>
             <p className="text-dark-700">
               Your appointment request has been received. We will contact you during business hours to confirm details.
@@ -58,7 +56,7 @@ export default async function BookingConfirmation({
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left Column - Success Message */}
+            {/* Left Column - Confirmation Message */}
             <div className="lg:w-2/3">
               <div className="bg-dark-400 border border-dark-500 rounded-xl p-6 md:p-8 mb-6">
                 <div className="flex flex-col items-center text-center mb-8">
@@ -79,8 +77,7 @@ export default async function BookingConfirmation({
                     We have received your appointment request for <span className="font-semibold">{branch?.name}</span>.
                   </p>
                   <p className="text-dark-600">
-                    Our team will contact you at the phone number provided to confirm your appointment time 
-                    and answer any questions you may have.
+                    Our team will contact you at the phone number provided to confirm your appointment time.
                   </p>
                 </div>
 
@@ -121,20 +118,20 @@ export default async function BookingConfirmation({
                 </div>
 
                 {/* Next Steps */}
-                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                  <h4 className="text-16-semibold mb-2 text-green-500">Next Steps:</h4>
+                <div className="p-4 bg-dark-300 border border-dark-500 rounded-lg">
+                  <h4 className="text-16-semibold mb-2">Next Steps:</h4>
                   <ul className="space-y-2 text-sm text-dark-600">
                     <li className="flex items-start gap-2">
                       <span className="mt-1 size-1.5 bg-dark-600 rounded-full"></span>
-                      <span>We will call you within 24 business hours to confirm your appointment</span>
+                      <span>We will call you during business hours to confirm your appointment</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="mt-1 size-1.5 bg-dark-600 rounded-full"></span>
-                      <span>Please have your medical aid information available</span>
+                      <span>Please have your medical aid information available if applicable</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="mt-1 size-1.5 bg-dark-600 rounded-full"></span>
-                      <span>Arrive 10 minutes before your appointment time</span>
+                      <span>Arrive before your appointment time</span>
                     </li>
                   </ul>
                 </div>
@@ -156,7 +153,7 @@ export default async function BookingConfirmation({
                   </Button>
                   
                   <Button asChild variant="outline" className="shad-gray-btn w-full">
-                    <Link href="/contact">Contact Our Clinics</Link>
+                    <Link href="/contact">Contact Our Practices</Link>
                   </Button>
                   
                   <Button asChild variant="outline" className="shad-gray-btn w-full">
@@ -167,10 +164,10 @@ export default async function BookingConfirmation({
 
               {/* Contact Information */}
               <div className="bg-dark-400 border border-dark-500 rounded-xl p-6 mb-6">
-                <h3 className="text-18-bold mb-4">Need Help?</h3>
+                <h3 className="text-18-bold mb-4">Contact Information</h3>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-14-semibold mb-1">Clinic Phone:</p>
+                    <p className="text-14-semibold mb-1">Practice Phone:</p>
                     <p className="text-dark-600">+263 242 700 000</p>
                   </div>
                   
@@ -189,7 +186,7 @@ export default async function BookingConfirmation({
               {/* Branch Info */}
               {branch && (
                 <div className="bg-dark-400 border border-dark-500 rounded-xl p-6">
-                  <h3 className="text-18-bold mb-4">Selected Clinic</h3>
+                  <h3 className="text-18-bold mb-4">Selected Practice</h3>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <div className="p-2 bg-dark-300 rounded">
@@ -223,13 +220,11 @@ export default async function BookingConfirmation({
           {/* Footer Note */}
           <div className="mt-8 pt-8 border-t border-dark-500 text-center">
             <p className="text-sm text-dark-600">
-              For changes to your appointment, please contact us directly. 
-              Appointment confirmations are subject to availability.
+              For changes to your appointment, please contact us directly.
             </p>
           </div>
         </div>
       </main>
-   
     </div>
   );
 }

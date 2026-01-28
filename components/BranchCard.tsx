@@ -1,5 +1,3 @@
-// components\BranchCard.tsx - CORRECTED VERSION
-
 import Image from "next/image";
 import Link from "next/link";
 import { BranchDetail } from "@/constants/branches";
@@ -64,7 +62,7 @@ export const BranchCard = ({ branch }: BranchCardProps) => {
         </div>
         
         <div className="mb-6">
-          <h4 className="text-12-semibold text-dark-700 mb-2">Services Information:</h4>
+          <h4 className="text-12-semibold text-dark-700 mb-2">Available Services:</h4>
           <div className="flex flex-wrap gap-2">
             {branch.services.slice(0, 3).map((service, idx) => (
               <span 
@@ -87,12 +85,12 @@ export const BranchCard = ({ branch }: BranchCardProps) => {
         <div className="flex gap-3">
           <Button className="shad-gray-btn flex-1" size="sm" asChild>
             <Link href={`/locations/${branch.id}`}>
-              Location Information
+              View Details
             </Link>
           </Button>
           <Button className="shad-gray-btn flex-1" size="sm" asChild>
             <Link href={`/book?branch=${branch.id}`}>
-              Appointment Information
+              Book Appointment
             </Link>
           </Button>
         </div>

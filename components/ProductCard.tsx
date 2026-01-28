@@ -1,4 +1,4 @@
-// components\ProductCard.tsx - CORRECTED VERSION
+// components\ProductCard.tsx - 
 
 import Image from "next/image";
 import Link from "next/link";
@@ -37,15 +37,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </header>
         
         <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <div>
-              <p className="text-12-semibold text-dark-700">Cash Amount</p>
-              <p className="text-16-bold">{product.priceRange.cash}</p>
-            </div>
-            <div className="text-right">
-              <p className="text-12-semibold text-dark-700">Medical Aid Amount</p>
-              <p className="text-16-bold">{product.priceRange.insured}</p>
-            </div>
+          <div className="p-3 bg-dark-300 rounded-lg">
+            <p className="text-sm text-dark-600">
+              Consultation required for product information and fitting.
+            </p>
           </div>
         </div>
         
@@ -62,7 +57,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             ))}
             {product.features.length > 2 && (
               <span className="px-2 py-1 bg-dark-300 rounded text-10-regular text-dark-600">
-                +{product.features.length - 2} more
+                Information available
               </span>
             )}
           </div>

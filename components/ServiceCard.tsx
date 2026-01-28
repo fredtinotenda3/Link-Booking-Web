@@ -23,11 +23,11 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
         </div>
         <h3 className="text-24-bold flex-1">{service.title}</h3>
       </div>
-      
+
       <p className="text-dark-600 mb-6 flex-grow">
         {service.description}
       </p>
-      
+
       <div className="mb-8">
         <h4 className="text-14-semibold text-dark-700 mb-3">Service components:</h4>
         <ul className="space-y-2">
@@ -39,7 +39,7 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
           ))}
         </ul>
       </div>
-      
+
       <div className="mt-auto">
         <Button className="shad-gray-btn w-full" asChild aria-label={`Information about ${service.title}`}>
           <Link href={`/contact?service=${encodeURIComponent(service.title)}`}>

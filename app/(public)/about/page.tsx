@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,7 +15,7 @@ export default function AboutPage() {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h1 className="header mb-6">
-                About <span className="text-green-500">Link Opticians</span>
+                About Link Opticians
               </h1>
               <p className="text-dark-700 text-lg mb-8">
                 {ABOUT_DATA.hero.description}
@@ -37,7 +36,7 @@ export default function AboutPage() {
                   src={ABOUT_DATA.images.clinicInterior}
                   width={800}
                   height={600}
-                  alt="Clinic interior at Link Opticians"
+                  alt="Practice interior at Link Opticians"
                   className="w-full h-auto"
                 />
               </div>
@@ -77,7 +76,7 @@ export default function AboutPage() {
                 src={ABOUT_DATA.images.examRoom}
                 width={600}
                 height={500}
-                alt="Examination room at Link Opticians"
+                alt="Examination room"
                 className="w-full h-auto"
               />
             </div>
@@ -85,7 +84,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Values */}
+      {/* Practice Information */}
       <section className="py-16 bg-dark-300">
         <div className="mx-auto max-w-7xl px-[5%]">
           <h2 className="sub-header text-center mb-12">Practice Information</h2>
@@ -136,7 +135,7 @@ export default function AboutPage() {
                   src={ABOUT_DATA.images.communityEvent}
                   width={600}
                   height={400}
-                  alt="Community vision screening event"
+                  alt="Vision screening event"
                   className="w-full h-auto"
                 />
               </div>

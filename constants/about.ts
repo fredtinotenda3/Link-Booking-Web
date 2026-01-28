@@ -1,5 +1,3 @@
-// constants/about.ts - COMPLIANT VERSION
-
 export interface TeamMember {
   id: string;
   name: string;
@@ -38,7 +36,7 @@ export const ABOUT_DATA = {
   
   stats: [
     { id: "years", value: "16+", label: "Years in practice" },
-    { id: "locations", value: "5", label: "Clinic locations" },
+    { id: "locations", value: "5", label: "Practice locations" },
     { id: "practitioners", value: "4", label: "Qualified practitioners" }
   ],
   
@@ -52,23 +50,23 @@ export const ABOUT_DATA = {
     },
     {
       id: "technology",
-      title: "Diagnostic Equipment",
-      description: "Equipment for eye assessments"
+      title: "Eye Assessment",
+      description: "Examination of eye health"
     },
     {
       id: "personalized",
       title: "Patient Consultation",
-      description: "Individual attention during appointments"
+      description: "Discussion of eye health"
     },
     {
       id: "continuity",
-      title: "Follow-up Services",
-      description: "Additional appointments as needed"
+      title: "Additional Appointments",
+      description: "Follow-up services as needed"
     }
   ],
   
   community: {
-    description: "Community eye health services information:",
+    description: "Community eye health services:",
     initiatives: [
       "Vision screening services",
       "School eye health services",
@@ -92,9 +90,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Dr. Richard Maveneka",
     role: "Optometrist",
     experience: "16 years in practice",
-    specialty: "Pediatric optometry services",
+    specialty: "Eye examinations",
     image: "/assets/images/dr-sarah.jpg",
-    bio: "Experience with children's vision services.",
+    bio: "Provision of optometry services.",
     education: ["Optometry qualification"]
   },
   {
@@ -102,9 +100,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Dr. Taylor Mutaiwa",
     role: "Optometrist",
     experience: "8 years in practice",
-    specialty: "Dry eye services",
+    specialty: "Eye examinations",
     image: "/assets/images/dr-chen.jpg",
-    bio: "Experience with contact lens services.",
+    bio: "Provision of optometry services.",
     education: ["Optometry qualification"]
   },
   {
@@ -112,9 +110,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Dr. Emily Rodriguez",
     role: "Optometrist",
     experience: "8 years in practice",
-    specialty: "Low vision services",
+    specialty: "Eye examinations",
     image: "/assets/images/dr-emily.jpg",
-    bio: "Experience with vision impairment services.",
+    bio: "Provision of optometry services.",
     education: ["Optometry qualification"]
   },
   {
@@ -122,9 +120,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Lisa Thompson",
     role: "Optical Manager",
     experience: "10 years in practice",
-    specialty: "Frame services",
+    specialty: "Frame selection",
     image: "/assets/images/lisa-optical.jpg",
-    bio: "Experience with frame options.",
+    bio: "Assistance with frame selection.",
     education: ["Optical qualification"]
   }
 ];
@@ -133,19 +131,19 @@ export const VALUES: Value[] = [
   {
     id: "patient-centered",
     title: "Patient Services",
-    description: "Attention to patient concerns and vision requirements.",
+    description: "Provision of optometry services.",
     icon: "👁️"
   },
   {
     id: "excellence",
     title: "Professional Standards",
-    description: "Adherence to optometry protocols and procedures.",
+    description: "Adherence to optometry standards.",
     icon: "⚕️"
   },
   {
     id: "communication",
     title: "Information Provision",
-    description: "Explanation of eye health and service options.",
+    description: "Explanation of eye health information.",
     icon: "📋"
   },
   {

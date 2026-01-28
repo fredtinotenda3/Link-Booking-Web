@@ -1,5 +1,4 @@
-// components\ValueCard.tsx - CORRECTED VERSION
-
+// components\ValueCard.tsx - 
 import { Value } from "@/constants/about";
 
 interface ValueCardProps {

@@ -1,25 +1,23 @@
-// app\(public)\page.tsx - COMPLIANT VERSION
-
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import PasskeyModal from "@/components/PasskeyModal";
 import { SearchParamProps } from "@/types";
-import { 
-  HOME_SERVICES_PREVIEW, 
-  HOME_HERO_DATA, 
+import {
+  HOME_SERVICES_PREVIEW,
+  HOME_HERO_DATA,
 } from "@/constants/home";
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const params = await searchParams;
   const isAdmin = params?.admin === "true";
-  
+
   return (
     <div className="min-h-screen">
       {isAdmin && <PasskeyModal />}
-      
-      {/* Hero Section - Professional Focus */}
+
+      {/* Hero Section */}
       <section className="relative flex flex-col lg:flex-row min-h-[80vh]">
         <div className="container my-auto py-12 lg:py-0">
           <div className="max-w-2xl">
@@ -27,20 +25,20 @@ export default async function Home({ searchParams }: SearchParamProps) {
               Link <span className="text-green-500">Opticians</span>
             </h1>
             <p className="text-dark-700 mb-6 text-lg">
-              Optometry services available at clinic locations. Established in 2008.
+              Optometry services are available at our clinic locations. The practice was established in 2008.
             </p>
             <div className="mb-8 space-y-4">
               <div className="flex items-center gap-3">
                 <div className="size-2 bg-green-500 rounded-full"></div>
-                <span className="text-dark-600">Medical aid claims accepted according to plan coverage</span>
+                <span className="text-dark-600">Medical aid claims are accepted, subject to the terms of your individual medical aid plan.</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="size-2 bg-green-500 rounded-full"></div>
-                <span className="text-dark-600">Optometry services by qualified practitioners</span>
+                <span className="text-dark-600">Optometry services are provided by registered practitioners.</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="size-2 bg-green-500 rounded-full"></div>
-                <span className="text-dark-600">Lens laboratory at clinic locations</span>
+                <span className="text-dark-600">On-site lens manufacturing facilities are available.</span>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -71,29 +69,29 @@ export default async function Home({ searchParams }: SearchParamProps) {
         </div>
       </section>
 
-      {/* Professional Services Information */}
+      {/* Practice Services */}
       <section className="py-12 bg-green-600/10 border-y border-green-500/20">
         <div className="mx-auto max-w-7xl px-[5%]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🔬</div>
-              <h2 className="text-18-bold mb-2">Our Laboratory</h2>
+              <h2 className="text-18-bold mb-2">On-Site Laboratory</h2>
               <p className="text-dark-600">
-                Lenses manufactured at our clinic
+                Spectacle lenses are manufactured on-site.
               </p>
             </div>
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🏥</div>
-              <h2 className="text-18-bold mb-2">Payment Options</h2>
+              <h2 className="text-18-bold mb-2">Accepted Payments</h2>
               <p className="text-dark-600">
-                Medical aid claims and cash payment accepted
+                Medical aid and cash payments are accepted.
               </p>
             </div>
             <div className="text-center p-6">
               <div className="text-4xl mb-4">⚕️</div>
-              <h2 className="text-18-bold mb-2">Clinic Locations</h2>
+              <h2 className="text-18-bold mb-2">Practice Locations</h2>
               <p className="text-dark-600">
-                Clinics in Harare, Chipinge, and Chiredzi
+                Practices are located in Harare, Chipinge, and Chiredzi.
               </p>
             </div>
           </div>
@@ -104,18 +102,18 @@ export default async function Home({ searchParams }: SearchParamProps) {
       <section className="bg-dark-400 py-16">
         <div className="mx-auto max-w-7xl px-[5%]">
           <div className="text-center mb-12">
-            <h2 className="sub-header mb-4">Optometry Services</h2>
+            <h2 className="sub-header mb-4">Services Provided</h2>
             <p className="text-dark-700 max-w-2xl mx-auto">
-              Professional eye care services
+              Professional eye care services are provided.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {HOME_SERVICES_PREVIEW.map((service) => (
               <ServicePreviewCard key={service.id} service={service} />
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <Button className="shad-gray-btn" asChild>
               <Link href="/services">Service Information</Link>
@@ -130,23 +128,23 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h2 className="sub-header mb-6">
-                Community <span className="text-green-500">Services</span>
+                Community <span className="text-green-500">Initiatives</span>
               </h2>
               <p className="text-dark-700 mb-6">
-                School eye health services and mobile eye care services
+                School vision screenings and mobile outreach services are conducted.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center gap-3">
                   <div className="size-2 bg-green-500 rounded-full"></div>
-                  <span className="text-16-semibold">School vision screening</span>
+                  <span className="text-16-semibold">School-based vision screenings</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="size-2 bg-green-500 rounded-full"></div>
-                  <span className="text-16-semibold">Mobile unit for rural communities</span>
+                  <span className="text-16-semibold">Mobile outreach to rural communities</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="size-2 bg-green-500 rounded-full"></div>
-                  <span className="text-16-semibold">Diabetes eye health services</span>
+                  <span className="text-16-semibold">Eye health assessments for diabetic patients</span>
                 </li>
               </ul>
               <div className="mt-8">
@@ -155,7 +153,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
                 </Button>
               </div>
             </div>
-            
+
             <div className="lg:w-1/2">
               <div className="relative rounded-xl overflow-hidden border border-dark-500">
                 <Image
@@ -171,47 +169,47 @@ export default async function Home({ searchParams }: SearchParamProps) {
         </div>
       </section>
 
-      {/* Product Lines Information */}
+      {/* Optical Products Available */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-[5%]">
           <div className="text-center mb-12">
-            <h2 className="sub-header mb-4">Available Products</h2>
+            <h2 className="sub-header mb-4">Optical Products</h2>
             <p className="text-dark-700 max-w-2xl mx-auto">
-              Frames, lenses, sunglasses and accessories available at branches
+              Optical products are available at our practices.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6">
               <div className="size-16 bg-dark-300 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">👓</span>
               </div>
               <h3 className="text-16-semibold mb-2">Frames</h3>
-              <p className="text-dark-600 text-sm">Frame options available</p>
+              <p className="text-dark-600 text-sm">Spectacle frames are available.</p>
             </div>
             <div className="text-center p-6">
               <div className="size-16 bg-dark-300 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🕶️</span>
               </div>
               <h3 className="text-16-semibold mb-2">Sunglasses</h3>
-              <p className="text-dark-600 text-sm">Sunglasses available</p>
+              <p className="text-dark-600 text-sm">Prescription and non-prescription sunglasses are available.</p>
             </div>
             <div className="text-center p-6">
               <div className="size-16 bg-dark-300 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🧿</span>
               </div>
               <h3 className="text-16-semibold mb-2">Contact Lenses</h3>
-              <p className="text-dark-600 text-sm">Contact lens options</p>
+              <p className="text-dark-600 text-sm">Contact lenses are available.</p>
             </div>
             <div className="text-center p-6">
               <div className="size-16 bg-dark-300 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🧴</span>
               </div>
               <h3 className="text-16-semibold mb-2">Accessories</h3>
-              <p className="text-dark-600 text-sm">Eyewear accessories</p>
+              <p className="text-dark-600 text-sm">Eyewear maintenance accessories are available.</p>
             </div>
           </div>
-          
+
           <div className="text-center mt-12">
             <Button className="shad-gray-btn" asChild>
               <Link href="/products">Product Information</Link>
@@ -224,9 +222,9 @@ export default async function Home({ searchParams }: SearchParamProps) {
       <section className="py-16 bg-dark-400">
         <div className="mx-auto max-w-4xl px-[5%] text-center">
           <div className="bg-dark-300 border border-dark-500 rounded-2xl p-12">
-            <h2 className="sub-header mb-6">Eye Examinations</h2>
+            <h2 className="sub-header mb-6">Schedule an Appointment</h2>
             <p className="text-dark-700 mb-8 text-lg max-w-2xl mx-auto">
-              Appointments available. Medical aid claims and cash payment accepted according to plan coverage.
+              Appointments are available. Medical aid and cash payments are accepted, subject to the terms of your individual medical aid plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="shad-gray-btn px-8 py-6 text-lg" asChild>
@@ -238,7 +236,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             </div>
             <div className="mt-8 pt-8 border-t border-dark-500">
               <p className="text-sm text-dark-600">
-                Established 2008 • Serving Zimbabwe • Professional Optometry Services
+                Established in 2008 • Registered Optometry Practice
               </p>
             </div>
           </div>
@@ -249,15 +247,15 @@ export default async function Home({ searchParams }: SearchParamProps) {
 }
 
 // Service Preview Card Component
-const ServicePreviewCard = ({ 
-  service 
-}: { 
-  service: { 
-    id: string; 
-    title: string; 
-    description: string; 
+const ServicePreviewCard = ({
+  service
+}: {
+  service: {
+    id: string;
+    title: string;
+    description: string;
     icon: string;
-  } 
+  }
 }) => {
   return (
     <div className="bg-dark-300 p-6 rounded-lg border border-dark-500 h-full">

@@ -1,4 +1,4 @@
-// app\(public)\services\page.tsx - COMPLIANT VERSION
+// app/(public)/services/page.tsx - COMPLIANT VERSION
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -6,28 +6,26 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
-import { PricingTable } from "@/components/PricingTable";
-import { 
-  SERVICES_DATA, 
-  INSURANCE_PARTNERS, 
+import {
+  SERVICES_DATA,
+  INSURANCE_PARTNERS,
   PAYMENT_OPTIONS,
-  PRACTICE_FEATURES 
+  PRACTICE_FEATURES
 } from "@/constants/services";
 
 export const metadata: Metadata = {
   title: "Services | Link Opticians",
-  description: "Optometry services available. Medical aid claims and cash payment options.",
+  description: "Optometry services information",
   keywords: [
     "eye examination",
     "optometry services",
     "eye care",
-    "medical aid",
     "opticians",
     "Link Opticians"
   ],
   openGraph: {
     title: "Services | Link Opticians",
-    description: "Optometry services",
+    description: "Optometry services information",
     type: "website",
     url: "https://linkopticians.co.zw/services",
     images: [
@@ -42,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Services | Link Opticians",
-    description: "Optometry services",
+    description: "Optometry services information",
     images: ["/assets/images/medical-aid-accepted.jpeg"]
   },
   alternates: {
@@ -61,11 +59,11 @@ export default function ServicesPage() {
               Services at <span className="text-green-500">Link Opticians</span>
             </h1>
             <p className="text-dark-700 text-lg max-w-3xl mx-auto mb-8">
-              Optometry services with diagnostic equipment. Services available for patients with medical aid coverage and cash payment options.
+              Professional optometry services. Eye examinations and related services available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="shad-gray-btn" size="lg" asChild>
-                <Link href="#service-details">Service Details</Link>
+                <Link href="/book">Book Appointment</Link>
               </Button>
               <Button className="shad-gray-btn" size="lg" asChild>
                 <Link href="/contact">Contact for Information</Link>
@@ -75,7 +73,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Service Features */}
-        <section aria-label="Service features" className="py-12 bg-green-600/10">
+        <section aria-label="Service information" className="py-12 bg-green-600/10">
           <div className="mx-auto max-w-7xl px-[5%]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center p-6">
@@ -86,17 +84,17 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className="text-center p-6">
-                <div className="text-3xl mb-4">💰</div>
-                <h2 className="text-18-bold mb-2">Payment Options</h2>
+                <div className="text-3xl mb-4">💳</div>
+                <h2 className="text-18-bold mb-2">Payment Information</h2>
                 <p className="text-dark-600">
-                  Medical aid claims and cash payment
+                  Payment options information available
                 </p>
               </div>
               <div className="text-center p-6">
                 <div className="text-3xl mb-4">⚕️</div>
                 <h2 className="text-18-bold mb-2">Professional Services</h2>
                 <p className="text-dark-600">
-                  Optometry services by qualified practitioners
+                  Qualified practitioners
                 </p>
               </div>
             </div>
@@ -109,10 +107,10 @@ export default function ServicesPage() {
             <header className="text-center mb-12">
               <h2 id="services-heading" className="sub-header mb-4">Optometry Services</h2>
               <p className="text-dark-700 max-w-2xl mx-auto">
-                Professional eye care services
+                Professional eye care services available
               </p>
             </header>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {SERVICES_DATA.map((service, index) => (
                 <ServiceCard key={index} service={service} />
@@ -121,20 +119,16 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Service Details Section */}
-        <section id="service-details" aria-labelledby="pricing-heading" className="py-16 bg-dark-300">
+        {/* Service Information */}
+        <section aria-labelledby="information-heading" className="py-16 bg-dark-300">
           <div className="mx-auto max-w-7xl px-[5%]">
             <header className="text-center mb-12">
-              <h2 id="pricing-heading" className="sub-header mb-4">Service Details</h2>
+              <h2 id="information-heading" className="sub-header mb-4">Service Information</h2>
               <p className="text-dark-700 max-w-2xl mx-auto">
-                Service information for cash payment and medical aid
+                Consultation required to determine appropriate services
               </p>
             </header>
-            
-            <div className="mb-8">
-              <PricingTable />
-            </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <article className="bg-dark-400 border border-dark-500 rounded-xl p-6">
                 <h3 className="text-18-bold mb-4">Practice Information</h3>
@@ -147,20 +141,10 @@ export default function ServicesPage() {
                   ))}
                 </ul>
               </article>
-              
+
               <article className="bg-dark-400 border border-dark-500 rounded-xl p-6">
-                <h3 className="text-18-bold mb-4">Payment Methods</h3>
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {PAYMENT_OPTIONS.map((option, index) => (
-                    <span 
-                      key={index}
-                      className="px-4 py-2 bg-dark-300 rounded-full text-sm"
-                    >
-                      {option}
-                    </span>
-                  ))}
-                </div>
-                <div className="p-4 bg-dark-300 rounded-lg">
+                <h3 className="text-18-bold mb-4">Payment Information</h3>
+                <div className="p-4 bg-dark-300 rounded-lg mb-6">
                   <p className="text-sm text-dark-600">
                     Medical aid coverage varies by plan. Contact for specific coverage information.
                   </p>
@@ -176,10 +160,10 @@ export default function ServicesPage() {
             <header className="text-center mb-12">
               <h2 id="medical-aid-heading" className="sub-header mb-4">Medical Aid Information</h2>
               <p className="text-dark-700 max-w-2xl mx-auto">
-                Medical aid coverage information. Cash payment also available.
+                Medical aid coverage information available upon consultation
               </p>
             </header>
-            
+
             {/* Medical Aid Image */}
             <div className="mb-12">
               <div className="bg-dark-400 border border-dark-500 rounded-2xl p-8">
@@ -194,25 +178,6 @@ export default function ServicesPage() {
                   />
                 </div>
               </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {INSURANCE_PARTNERS.map((partner) => (
-                <article 
-                  key={partner.name} 
-                  className="bg-dark-400 border border-dark-500 rounded-xl p-6"
-                >
-                  <h3 className="text-18-bold mb-2">{partner.name}</h3>
-                  <p className="text-dark-600 text-sm mb-3">{partner.description}</p>
-                  <div className="mb-3">
-                    <span className="text-xs font-semibold text-green-500">COVERAGE INFORMATION:</span>
-                    <p className="text-sm">{partner.coverage}</p>
-                  </div>
-                  {partner.notes && (
-                    <p className="text-xs text-dark-600 italic">{partner.notes}</p>
-                  )}
-                </article>
-              ))}
             </div>
           </div>
         </section>
@@ -249,7 +214,7 @@ export default function ServicesPage() {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="lg:w-1/2">
                 <div className="relative rounded-xl overflow-hidden border border-dark-500">
                   <Image
@@ -272,7 +237,7 @@ export default function ServicesPage() {
               <header className="mb-8">
                 <h2 id="cta-heading" className="sub-header mb-6">Eye Examinations</h2>
                 <p className="text-dark-700 mb-8 text-lg max-w-2xl mx-auto">
-                  Appointments available.
+                  Appointments available. Consultation required to determine appropriate services.
                 </p>
               </header>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

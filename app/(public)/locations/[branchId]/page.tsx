@@ -1,5 +1,3 @@
-// app\(public)\locations\[branchId]\page.tsx - CORRECTED VERSION
-
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -75,12 +73,12 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
               <div className="flex flex-wrap gap-4">
                 <Button className="shad-primary-btn" asChild>
                   <Link href={`/book?branch=${branch.id}`}>
-                    Appointment Information
+                    Book Appointment
                   </Link>
                 </Button>
                 <Button className="shad-gray-btn" asChild>
                   <Link href={`tel:${branch.phone.replace(/\D/g, "")}`}>
-                    Contact Information
+                    Call Clinic
                   </Link>
                 </Button>
               </div>
@@ -112,7 +110,7 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
               <div className="bg-dark-400 border border-dark-500 rounded-xl p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="text-16-semibold mb-3">Hours Information</h3>
+                    <h3 className="text-16-semibold mb-3">Hours</h3>
                     <div className="space-y-3">
                       <div className="flex justify-between">
                         <span className="text-dark-600">Monday - Friday</span>
@@ -134,9 +132,9 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
                   </div>
                   
                   <div>
-                    <h3 className="text-16-semibold mb-3">Emergency Services</h3>
+                    <h3 className="text-16-semibold mb-3">Emergency Care</h3>
                     <p className="text-dark-600 mb-4">
-                      For eye emergencies outside operating hours, contact emergency services:
+                      For eye emergencies outside operating hours:
                     </p>
                     <Button className="shad-gray-btn w-full" asChild>
                       <Link href="tel:+263773407464">
@@ -148,12 +146,12 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
               </div>
             </section>
 
-            {/* Services Information */}
+            {/* Services */}
             <section>
-              <h2 className="text-24-bold mb-6">Services Information</h2>
+              <h2 className="text-24-bold mb-6">Services</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-18-bold mb-4">Services Information</h3>
+                  <h3 className="text-18-bold mb-4">Available Services</h3>
                   <ul className="space-y-3">
                     {branch.services.map((service, index) => (
                       <li key={index} className="flex items-center gap-3">
@@ -165,7 +163,7 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
                 </div>
                 
                 <div>
-                  <h3 className="text-18-bold mb-4">Service Information</h3>
+                  <h3 className="text-18-bold mb-4">Specialties</h3>
                   <div className="flex flex-wrap gap-3">
                     {branch.specialties.map((specialty, index) => (
                       <span 
@@ -180,13 +178,13 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
               </div>
             </section>
 
-            {/* Facilities Information */}
+            {/* Facilities */}
             <section>
-              <h2 className="text-24-bold mb-6">Facilities Information</h2>
+              <h2 className="text-24-bold mb-6">Facilities</h2>
               <div className="bg-dark-400 border border-dark-500 rounded-xl p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="text-16-semibold mb-3">Facilities Information</h3>
+                    <h3 className="text-16-semibold mb-3">Clinic Facilities</h3>
                     <ul className="space-y-2">
                       {branch.facilities.map((facility, index) => (
                         <li key={index} className="flex items-center gap-2">
@@ -203,7 +201,7 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
                   </div>
                   
                   <div>
-                    <h3 className="text-16-semibold mb-3">Accessibility Information</h3>
+                    <h3 className="text-16-semibold mb-3">Accessibility</h3>
                     <ul className="space-y-2">
                       {branch.accessibility.map((access, index) => (
                         <li key={index} className="flex items-center gap-2">
@@ -219,7 +217,7 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
                     </ul>
                     
                     <div className="mt-6">
-                      <h3 className="text-16-semibold mb-2">Parking Information</h3>
+                      <h3 className="text-16-semibold mb-2">Parking</h3>
                       <p className="text-dark-600">{branch.parking}</p>
                     </div>
                   </div>
@@ -230,9 +228,9 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
 
           {/* Right Column - Sidebar */}
           <div className="space-y-8">
-            {/* Practitioner Information */}
+            {/* Practitioners */}
             <div className="bg-dark-400 border border-dark-500 rounded-xl p-6">
-              <h3 className="text-18-bold mb-4">Practitioner Information</h3>
+              <h3 className="text-18-bold mb-4">Practitioners</h3>
               <div className="space-y-4">
                 {branch.doctors.map((doctor, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -253,13 +251,13 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
               </div>
             </div>
 
-            {/* Location Information */}
+            {/* Quick Actions */}
             <div className="bg-dark-400 border border-dark-500 rounded-xl p-6">
-              <h3 className="text-18-bold mb-4">Location Information</h3>
+              <h3 className="text-18-bold mb-4">Quick Actions</h3>
               <div className="space-y-3">
                 <Button className="shad-primary-btn w-full" asChild>
                   <Link href={`/book?branch=${branch.id}`}>
-                    Appointment Information
+                    Book Appointment
                   </Link>
                 </Button>
                 <Button className="shad-gray-btn w-full" asChild>
@@ -269,23 +267,23 @@ export default async function BranchDetailPage({ params }: BranchPageProps) {
                 </Button>
                 <Button className="shad-gray-btn w-full" asChild>
                   <Link href={`tel:${branch.phone.replace(/\D/g, "")}`}>
-                    Contact Information
+                    Call Clinic
                   </Link>
                 </Button>
               </div>
             </div>
 
-            {/* Location Notes */}
+            {/* Notes */}
             {branch.notes && (
               <div className="bg-dark-300 border border-dark-500 rounded-xl p-6">
-                <h3 className="text-16-semibold mb-3">Location Information</h3>
+                <h3 className="text-16-semibold mb-3">Notes</h3>
                 <p className="text-dark-600">{branch.notes}</p>
               </div>
             )}
 
             {/* Other Locations */}
             <div className="bg-dark-400 border border-dark-500 rounded-xl p-6">
-              <h3 className="text-18-bold mb-4">Other Locations</h3>
+              <h3 className="text-18-bold mb-4">Our Other Locations</h3>
               <div className="space-y-3">
                 {BRANCHES_DATA
                   .filter(b => b.id !== branch.id)

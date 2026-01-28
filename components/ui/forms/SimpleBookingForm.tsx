@@ -1,5 +1,3 @@
-// components\ui\forms\SimpleBookingForm.tsx - FIXED BUTTON PLACEMENT
-
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -61,8 +59,8 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
           fieldType={FormFieldType.SELECT}
           control={form.control}
           name="branchId"
-          label="Select Clinic Location"
-          placeholder="Select a clinic location"
+          label="Select Practice Location"
+          placeholder="Select a practice location"
         >
           {branches.map((branch) => (
             <SelectItem key={branch.$id} value={branch.$id!}>
@@ -122,18 +120,15 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
           />
         </div>
 
-        {/* Submit Button - MOVED HERE to be right after the reason field */}
+        {/* Submit Button */}
         <SubmitButton isLoading={isLoading}>
           Submit Appointment Request
         </SubmitButton>
 
-        {/* Privacy Note - MOVED AFTER the submit button */}
+        {/* Privacy Note */}
         <div className="p-4 bg-dark-300 rounded-lg">
-          <p className="text-sm text-dark-600 mb-2">
-            <strong>Privacy Note:</strong> Your information is collected for appointment purposes only.
-          </p>
           <p className="text-sm text-dark-600">
-            Appointment confirmations will be sent via SMS or email during business hours.
+            Your information is collected for appointment purposes only. Appointment confirmations will be sent via SMS or email during business hours.
           </p>
         </div>
 
