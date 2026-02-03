@@ -1,3 +1,4 @@
+// components/ui/forms/SimpleBookingForm.tsx
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,17 +15,23 @@ import SubmitButton from "@/components/SubmitButton";
 import { createSimpleAppointment } from "@/lib/actions/booking.actions";
 import { Branch } from "@/types";
 import { SelectItem } from "../select";
+import { trackAppointmentRequest, trackSMSOptIn } from "@/components/Analytics"; // ADDED
 
 interface SimpleBookingFormProps {
   branches: Branch[];
 }
 
+// UPDATED SCHEMA WITH SMS OPT-IN
+const EnhancedBookingSchema = SimpleBookingSchema.extend({
+  smsOptIn: z.boolean().default(true).optional(),
+});
+
 export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof SimpleBookingSchema>>({
-    resolver: zodResolver(SimpleBookingSchema),
+  const form = useForm<z.infer<typeof EnhancedBookingSchema>>({
+    resolver: zodResolver(EnhancedBookingSchema),
     defaultValues: {
       branchId: "",
       schedule: new Date(),
@@ -32,13 +39,23 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
       patientEmail: "",
       patientPhone: "",
       reason: "",
+      smsOptIn: true, // Default to opted-in
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof SimpleBookingSchema>) => {
+  const onSubmit = async (values: z.infer<typeof EnhancedBookingSchema>) => {
     setIsLoading(true);
 
     try {
+      // TRACK ANALYTICS EVENTS
+      const branch = branches.find(b => b.$id === values.branchId);
+      trackAppointmentRequest(
+        branch?.name || "Unknown Branch",
+        "online_form"
+      );
+      
+      trackSMSOptIn(values.smsOptIn === true);
+      
       const result = await createSimpleAppointment(values);
       
       if (result?.success) {
@@ -118,6 +135,30 @@ export const SimpleBookingForm = ({ branches }: SimpleBookingFormProps) => {
             label="Reason for Appointment (optional)"
             placeholder="Describe reason for appointment"
           />
+
+          {/* SMS Opt-in Section */}
+          <div className="p-4 bg-dark-300 rounded-lg border border-dark-500">
+            <CustomFormField
+              fieldType={FormFieldType.CHECKBOX}
+              control={form.control}
+              name="smsOptIn"
+              label="Send SMS appointment reminders and confirmations"
+            />
+            <div className="mt-2 space-y-1">
+              <p className="text-xs text-dark-600">
+                • Receive appointment confirmations via SMS
+              </p>
+              <p className="text-xs text-dark-600">
+                • Get reminders 24 hours and 3 hours before your appointment
+              </p>
+              <p className="text-xs text-dark-600">
+                • Standard SMS rates may apply
+              </p>
+              <p className="text-xs text-dark-600 mt-2">
+                You can unsubscribe anytime by replying STOP to our messages.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Submit Button */}

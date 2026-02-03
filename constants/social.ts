@@ -100,3 +100,80 @@ export const SIMPLE_SOCIAL_LINKS = [
   { name: 'Instagram', url: 'https://instagram.com/linkopticians' },
   { name: 'YouTube', url: 'https://youtube.com/@linkopticians' },
 ];
+
+// ADD TO EXISTING constants/social.ts file:
+
+// ==================== SMS CONFIGURATION ====================
+export interface SMSReminderConfig {
+  enabled: boolean;
+  reminderTimes: number[]; // hours before appointment
+  templates: {
+    confirmation: (name: string, date: string, time: string, branch: string) => string;
+    reminder24h: (name: string, date: string, time: string, branch: string) => string;
+    reminder3h: (name: string, date: string, time: string) => string; // Removed branch parameter
+    cancelled: (name: string, date: string, time: string) => string;
+    rescheduled: (name: string, oldDate: string, newDate: string, newTime: string) => string;
+  };
+}
+
+export const SMS_CONFIG = {
+  appointmentReminders: {
+    enabled: true,
+    // Reminder times (hours before appointment)
+    reminderTimes: [24, 3], // 24 hours and 3 hours before
+    // Message templates
+    templates: {
+      confirmation: (name: string, date: string, time: string, branch: string) => 
+        `Hello ${name}, your appointment at Link Opticians is confirmed for ${date} at ${time} at ${branch}. Please arrive 10 minutes early.`,
+      
+      reminder24h: (name: string, date: string, time: string, branch: string) =>
+        `Reminder: Your Link Opticians appointment is tomorrow (${date}) at ${time} at ${branch}. Call +263242700000 for changes.`,
+      
+      reminder3h: (name: string, date: string, time: string) => // Removed unused branch parameter
+        `Reminder: Your Link Opticians appointment is today at ${time}. Please bring medical aid card if applicable.`,
+      
+      cancelled: (name: string, date: string, time: string) =>
+        `Dear ${name}, your Link Opticians appointment on ${date} at ${time} has been cancelled. Call +263242700000 to reschedule.`,
+      
+      rescheduled: (name: string, oldDate: string, newDate: string, newTime: string) =>
+        `Hello ${name}, your Link Opticians appointment has been rescheduled to ${newDate} at ${newTime} (was ${oldDate}).`
+    }
+  },
+  
+  // SMS opt-in messages
+  optIn: {
+    welcome: "Thank you for opting into SMS reminders from Link Opticians. You'll receive appointment confirmations and reminders.",
+    help: "Reply STOP to unsubscribe. Standard SMS rates may apply.",
+    stop: "You have been unsubscribed from Link Opticians SMS reminders. Reply START to resubscribe."
+  }
+};
+
+// Helper function to format date for SMS (Zimbabwe format)
+export const formatSMSDate = (date: Date): string => {
+  return date.toLocaleDateString('en-ZW', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+};
+
+// Helper function to format time for SMS (Zimbabwe format)  
+export const formatSMSTime = (date: Date): string => {
+  return date.toLocaleTimeString('en-ZW', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+  });
+};
+
+// Type for SMS reminder data
+export interface SMSReminderData {
+  patientName: string;
+  patientPhone: string;
+  appointmentId: string;
+  appointmentDate: Date;
+  branchName?: string;
+  status: 'pending' | 'schedule' | 'cancelled'; // Using your Status type
+  smsOptIn: boolean;
+}

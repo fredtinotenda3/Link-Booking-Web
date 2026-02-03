@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getWhatsAppUrl } from "@/constants/social";
+import { trackWhatsAppClick } from "@/components/Analytics"; // ADDED
 
 export const FloatingWhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -38,6 +39,10 @@ export const FloatingWhatsAppButton = () => {
 
   const defaultMessage = "Hello Link Opticians, I'd like to inquire about your services.";
 
+  const handleWhatsAppClick = (context: string) => {
+    trackWhatsAppClick(context); // TRACK CLICK
+  };
+
   return (
     <>
       {/* Floating WhatsApp Button */}
@@ -56,6 +61,7 @@ export const FloatingWhatsAppButton = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             aria-label="Chat with us on WhatsApp"
+            onClick={() => handleWhatsAppClick("floating_button")} // ADDED TRACKING
           >
             {/* WhatsApp Icon */}
             <div className="relative w-7 h-7">
@@ -103,6 +109,7 @@ export const FloatingWhatsAppButton = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 p-2 bg-dark-400 hover:bg-dark-300 border border-dark-500 rounded-lg shadow-lg transition"
               aria-label="Message us on Facebook"
+              onClick={() => handleWhatsAppClick("facebook_from_float")}
             >
               <div className="w-6 h-6 relative">
                 <Image
@@ -122,6 +129,7 @@ export const FloatingWhatsAppButton = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 p-2 bg-dark-400 hover:bg-dark-300 border border-dark-500 rounded-lg shadow-lg transition"
               aria-label="Message us on Instagram"
+              onClick={() => handleWhatsAppClick("instagram_from_float")}
             >
               <div className="w-6 h-6 relative">
                 <Image
@@ -146,6 +154,7 @@ export const FloatingWhatsAppButton = () => {
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg"
           aria-label="Chat on WhatsApp"
+          onClick={() => handleWhatsAppClick("mobile_floating_button")}
         >
           <div className="w-5 h-5 relative">
             <Image
@@ -167,6 +176,10 @@ export const FloatingWhatsAppButton = () => {
 export const SimpleFloatingWhatsAppButton = () => {
   const defaultMessage = "Hello Link Opticians, I'd like to inquire about your services.";
 
+  const handleClick = () => {
+    trackWhatsAppClick("simple_floating_button"); // ADDED TRACKING
+  };
+
   return (
     <Link
       href={getWhatsAppUrl(defaultMessage)}
@@ -174,6 +187,7 @@ export const SimpleFloatingWhatsAppButton = () => {
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
       aria-label="Chat with us on WhatsApp"
+      onClick={handleClick} // ADDED TRACKING
     >
       <div className="relative w-7 h-7">
         <Image

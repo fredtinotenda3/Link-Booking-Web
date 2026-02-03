@@ -1,12 +1,11 @@
 "use server";
 
 import { ID, Query } from "node-appwrite";
-import { parseStringify } from "../utils";
+import { parseStringify, formatDateTime } from "../utils";
 import { databases, users } from "../appwrite.config";
 import { DATABASE_ID, APPOINTMENT_COLLECTION_ID, PATIENT_COLLECTION_ID } from "../appwrite.config";
 import { revalidatePath } from "next/cache";
 import { sendSMSNotification } from "./appointment.actions";
-import { formatDateTime } from "../utils";
 
 interface CreateSimpleAppointmentParams {
   branchId: string;
@@ -15,6 +14,7 @@ interface CreateSimpleAppointmentParams {
   patientEmail: string;
   patientPhone: string;
   reason?: string;
+  smsOptIn?: boolean; // ADDED
 }
 
 export const createSimpleAppointment = async (
@@ -104,15 +104,16 @@ export const createSimpleAppointment = async (
         schedule: params.schedule,
         status: "pending",
         reason: params.reason || "General appointment",
-        note: "Created via simplified booking",
+        note: `Created via simplified booking. SMS Opt-in: ${params.smsOptIn !== false ? 'Yes' : 'No'}`, // ADDED
         primaryPhysician: "To be assigned",
       }
     );
 
-    if (params.patientPhone) {
+    // Send SMS only if opted in (default is true)
+    if (params.patientPhone && params.smsOptIn !== false) {
       await sendSMSNotification(
         params.patientPhone,
-        `Link Opticians: Appointment scheduled for ${formatDateTime(params.schedule).dateTime}.`
+        `Link Opticians: Appointment requested for ${formatDateTime(params.schedule).dateTime}. We'll contact you to confirm. Reply STOP to unsubscribe.`
       );
     }
 

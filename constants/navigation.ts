@@ -1,3 +1,4 @@
+// constants/navigation.ts - UPDATED WITH OFFERS
 export interface NavigationLink {
   id: string;
   label: string;
@@ -20,7 +21,7 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
     id: "services",
     label: "Services",
     href: "/services",
-    description: "View our services with transparent pricing"
+    description: "View our services"
   },
   {
     id: "products",
@@ -51,6 +52,18 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
     label: "Contact",
     href: "/contact",
     description: "Contact our clinic"
+  },
+  {
+    id: "emergency",
+    label: "Emergency",
+    href: "/emergency",
+    description: "Emergency eye care information"
+  },
+  {
+    id: "offers",
+    label: "Offers",
+    href: "/offers",
+    description: "Special promotions and seasonal offers"
   }
 ];
 
@@ -65,6 +78,8 @@ export const FOOTER_DATA = {
     { id: "community", label: "Community", href: "/community" },
     { id: "about", label: "About", href: "/about" },
     { id: "contact", label: "Contact", href: "/contact" },
+    { id: "emergency", label: "Emergency", href: "/emergency" },
+    { id: "offers", label: "Special Offers", href: "/offers" },
     { id: "book", label: "Book Online", href: "/book" }
   ]
 };

@@ -1,0 +1,12 @@
+﻿
+2026-02-03 15:09:30  ✅ Found 8 file(s) under lib/
+2026-02-03 15:09:31  ✔ Read: lib\actions\appointment.actions.ts
+2026-02-03 15:09:31  ✔ Read: lib\actions\booking.actions.ts
+2026-02-03 15:09:31  ✔ Read: lib\actions\branch.actions.ts
+2026-02-03 15:09:31  ✔ Read: lib\actions\patient.actions.ts
+2026-02-03 15:09:31  ✔ Read: lib\appwrite.config.ts
+2026-02-03 15:09:31  ✔ Read: lib\twilio.ts
+2026-02-03 15:09:31  ✔ Read: lib\utils.ts
+2026-02-03 15:09:31  ✔ Read: lib\validation.ts
+2026-02-03 15:09:32  ✅ Wrote lib_code.md — size: 31702 bytes
+2026-02-03 15:09:34  Done.

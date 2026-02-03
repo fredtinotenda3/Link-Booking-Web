@@ -1,4 +1,4 @@
-// components/LayoutHeader.tsx - Updated with green hover
+// components/LayoutHeader.tsx - UPDATED WITH EMERGENCY LINK
 "use client";
 
 import Link from "next/link";
@@ -26,6 +26,7 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
     if (pathname.startsWith("/community")) return "community";
     if (pathname.startsWith("/about")) return "about";
     if (pathname.startsWith("/contact")) return "contact";
+    if (pathname.startsWith("/emergency")) return "emergency";
     if (pathname.startsWith("/book")) return "book";
     return "";
   };
@@ -60,14 +61,17 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
               href={link.href}
               className={`text-14-medium transition ${
                 currentPage === link.id
-                  ? "text-green-500 font-semibold"
-                  : "text-dark-600 hover:text-green-500"
+                  ? link.id === "emergency"
+                    ? "text-red-500 font-semibold" // Red for emergency when active
+                    : "text-green-500 font-semibold" // Green for others when active
+                  : link.id === "emergency"
+                    ? "text-red-400 hover:text-red-300" // Red for emergency hover
+                    : "text-dark-600 hover:text-green-500" // Normal for others
               }`}
             >
               {link.label}
             </Link>
           ))}
-          {/* FIXED: Button with proper child structure */}
           <Button 
             className="shad-gray-btn border-dark-500 hover:bg-green-500 hover:text-white hover:border-green-500 transition" 
             asChild={true}
@@ -135,8 +139,12 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
                 onClick={closeMobileMenu}
                 className={`py-3 px-4 rounded-lg transition ${
                   currentPage === link.id
-                    ? "bg-dark-300 text-green-500 font-semibold"
-                    : "text-dark-600 hover:bg-dark-300 hover:text-green-500"
+                    ? link.id === "emergency"
+                      ? "bg-red-900/20 text-red-500 font-semibold border border-red-500/30" // Emergency active
+                      : "bg-dark-300 text-green-500 font-semibold" // Normal active
+                    : link.id === "emergency"
+                      ? "text-red-400 hover:bg-red-900/10 hover:text-red-300" // Emergency hover
+                      : "text-dark-600 hover:bg-dark-300 hover:text-green-500" // Normal hover
                 }`}
               >
                 {link.label}
@@ -144,7 +152,6 @@ export const LayoutHeader = ({ activePage }: LayoutHeaderProps) => {
             ))}
             
             <div className="pt-4 mt-2 border-t border-dark-500">
-              {/* FIXED: Mobile button with proper structure */}
               <Button 
                 className="shad-gray-btn border-dark-500 w-full hover:bg-green-500 hover:text-white hover:border-green-500 transition" 
                 asChild={true}

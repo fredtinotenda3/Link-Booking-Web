@@ -1,3 +1,6 @@
+// app/(public)/booking/confirmation/page.tsx - UPDATED FOR NEXT.JS 15
+
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -6,6 +9,7 @@ import { getBranchById } from "@/lib/actions/branch.actions";
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 
+// Option 1: Make it a server component (remove "use client")
 export default async function BookingConfirmation({
   searchParams,
 }: SearchParamProps) {

@@ -1,0 +1,29 @@
+﻿
+2026-02-03 15:06:48  ✅ Found 25 file(s) under app/
+2026-02-03 15:06:51  ✔ Read: app\(public)\about\page.tsx
+2026-02-03 15:06:51  ✔ Read: app\(public)\book\page.tsx
+2026-02-03 15:06:52  ✔ Read: app\(public)\booking\confirmation\page.tsx
+2026-02-03 15:06:52  ✔ Read: app\(public)\community\page.tsx
+2026-02-03 15:06:52  ✔ Read: app\(public)\contact\page.tsx
+2026-02-03 15:06:53  ✔ Read: app\(public)\emergency\page.tsx
+2026-02-03 15:06:53  ✔ Read: app\(public)\layout.tsx
+2026-02-03 15:06:53  ✔ Read: app\(public)\locations\[branchId]\page.tsx
+2026-02-03 15:06:54  ✔ Read: app\(public)\locations\page.tsx
+2026-02-03 15:06:54  ✔ Read: app\(public)\offers\page.tsx
+2026-02-03 15:06:54  ✔ Read: app\(public)\page.tsx
+2026-02-03 15:06:55  ✔ Read: app\(public)\products\[productId]\page.tsx
+2026-02-03 15:07:01  ✔ Read: app\(public)\products\page.tsx
+2026-02-03 15:07:01  ✔ Read: app\(public)\services\page.tsx
+2026-02-03 15:07:01  ✔ Read: app\_not-found.tsx
+2026-02-03 15:07:02  ✔ Read: app\admin\page.tsx
+2026-02-03 15:07:02  ✔ Read: app\admin\table\columns.tsx
+2026-02-03 15:07:02  ✔ Read: app\admin\table\DataTable.tsx
+2026-02-03 15:07:02  ✔ Read: app\api\sentry-example-api\route.ts
+2026-02-03 15:07:03  ✔ Read: app\global-error.tsx
+2026-02-03 15:07:03  ✔ Read: app\globals.css
+2026-02-03 15:07:03  ✔ Read: app\layout.tsx
+2026-02-03 15:07:04  ✔ Read: app\patients\[userId]\new-appointment\page.tsx
+2026-02-03 15:07:05  ✔ Read: app\patients\[userId]\new-appointment\success\page.tsx
+2026-02-03 15:07:05  ✔ Read: app\patients\[userId]\register\page.tsx
+2026-02-03 15:07:06  ✅ Wrote app_code.md — size: 173902 bytes
+2026-02-03 15:07:24  Done.

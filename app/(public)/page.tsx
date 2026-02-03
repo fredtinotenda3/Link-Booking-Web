@@ -1,8 +1,10 @@
+// app/(public)/page.tsx - UPDATED WITH PROMOTION BANNER
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import PasskeyModal from "@/components/PasskeyModal";
+import { PromotionBanner } from "@/components/PromotionBanner"; // ADD THIS
 import { SearchParamProps } from "@/types";
 import {
   HOME_SERVICES_PREVIEW,
@@ -69,6 +71,11 @@ export default async function Home({ searchParams }: SearchParamProps) {
         </div>
       </section>
 
+      {/* Promotion Banner - ADDED THIS SECTION */}
+      <section className="mx-auto max-w-7xl px-[5%] mt-8">
+        <PromotionBanner />
+      </section>
+
       {/* Practice Services */}
       <section className="py-12 bg-green-600/10 border-y border-green-500/20">
         <div className="mx-auto max-w-7xl px-[5%]">
@@ -88,7 +95,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
               </p>
             </div>
             <div className="text-center p-6">
-              <div className="text-4xl mb-4">⚕️</div>
+              <div className="text-4xl mb-4">📍</div>
               <h2 className="text-18-bold mb-2">Practice Locations</h2>
               <p className="text-dark-600">
                 Practices are located in Harare, Chipinge, and Chiredzi.
@@ -196,7 +203,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             </div>
             <div className="text-center p-6">
               <div className="size-16 bg-dark-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🧿</span>
+                <span className="text-2xl">👁️</span>
               </div>
               <h3 className="text-16-semibold mb-2">Contact Lenses</h3>
               <p className="text-dark-600 text-sm">Contact lenses are available.</p>
