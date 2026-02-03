@@ -1,3 +1,4 @@
+// app/(public)/contact/page.tsx - UPDATED WITH SOCIAL MEDIA
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,8 +7,14 @@ import { ContactForm } from "@/components/ui/forms/ContactForm";
 import { ContactInfoCard } from "@/components/ContactInfoCard";
 import { FAQCard } from "@/components/FAQCard";
 import { CONTACT_DATA, FAQ_DATA } from "@/constants/contact";
+import { SOCIAL_MEDIA_LINKS, SOCIAL_MEDIA_CONFIG, getWhatsAppUrl } from "@/constants/social";
 
 export default function ContactPage() {
+  // Get social media links for contact page
+  const contactSocialLinks = SOCIAL_MEDIA_LINKS.filter(platform => 
+    SOCIAL_MEDIA_CONFIG.contactPage.includes(platform.id)
+  );
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -34,6 +41,88 @@ export default function ContactPage() {
                 {CONTACT_DATA.contactInfo.map((info, index) => (
                   <ContactInfoCard key={index} info={info} />
                 ))}
+              </div>
+
+              {/* Social Media Section - NEW */}
+              <div className="mb-12">
+                <h3 className="text-18-bold mb-6">Connect With Us</h3>
+                <div className="bg-dark-400 border border-dark-500 rounded-xl p-6">
+                  <p className="text-dark-600 mb-4">
+                    Follow us on social media for updates, eye care tips, and practice news.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    {contactSocialLinks.map((platform) => (
+                      <a
+                        key={platform.id}
+                        href={platform.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 bg-dark-300 hover:bg-dark-500 border border-dark-500 rounded-lg transition-all hover:scale-105 group flex-1 min-w-[140px]"
+                        aria-label={`Follow us on ${platform.name}`}
+                        title={platform.description}
+                      >
+                        <div className="relative w-6 h-6 flex-shrink-0">
+                          <Image
+                            src={platform.icon}
+                            alt={platform.name}
+                            width={24}
+                            height={24}
+                            className="object-contain"
+                          />
+                        </div>
+                        <span className="text-14-semibold text-white">
+                          {platform.name}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+
+                  {/* WhatsApp Quick Action */}
+                  <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 bg-green-500/20 rounded-full">
+                        <Image
+                          src="/assets/icons/social/whatsapp.svg"
+                          alt="WhatsApp"
+                          width={20}
+                          height={20}
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-16-semibold text-white">Quick WhatsApp Inquiry</h4>
+                        <p className="text-sm text-dark-600">Get quick responses</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button
+                        asChild
+                        className="bg-green-500 hover:bg-green-600 text-white flex-1"
+                      >
+                        <Link
+                          href={getWhatsAppUrl("Hello, I'd like to book an appointment")}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Book Appointment
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="shad-gray-btn flex-1 border-green-500/50 hover:border-green-500"
+                      >
+                        <Link
+                          href={getWhatsAppUrl("Hello, I have a general inquiry")}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          General Inquiry
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Map Information */}
@@ -88,11 +177,32 @@ export default function ContactPage() {
                     For further inquiries, please call:{" "}
                     <span className="text-green-500 font-semibold">{CONTACT_DATA.phone.main}</span>
                   </p>
-                  <Button className="shad-gray-btn" asChild>
-                    <Link href={`tel:${CONTACT_DATA.phone.main.replace(/\D/g, "")}`}>
-                      Call Practice
-                    </Link>
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button className="shad-gray-btn" asChild>
+                      <Link href={`tel:${CONTACT_DATA.phone.main.replace(/\D/g, "")}`}>
+                        Call Practice
+                      </Link>
+                    </Button>
+                    <Button
+                      className="bg-green-500 hover:bg-green-600 text-white"
+                      asChild
+                    >
+                      <Link
+                        href={getWhatsAppUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Image
+                          src="/assets/icons/social/whatsapp.svg"
+                          alt="WhatsApp"
+                          width={20}
+                          height={20}
+                          className="mr-2"
+                        />
+                        Message on WhatsApp
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -144,9 +254,35 @@ export default function ContactPage() {
             <p className="text-dark-700 mb-8 text-lg max-w-2xl mx-auto">
               Appointment requests can be submitted online.
             </p>
-            <Button className="shad-gray-btn px-8 py-6 text-lg" asChild>
-              <Link href="/book">Request an Appointment</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="shad-gray-btn px-8 py-6 text-lg" asChild>
+                <Link href="/book">Request an Appointment</Link>
+              </Button>
+              <Button
+                className="bg-green-500 hover:bg-green-600 text-white px-8 py-6 text-lg"
+                asChild
+              >
+                <Link
+                  href={getWhatsAppUrl("Hello, I'd like to book an appointment")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src="/assets/icons/social/whatsapp.svg"
+                    alt="WhatsApp"
+                    width={24}
+                    height={24}
+                    className="mr-2"
+                  />
+                  Book via WhatsApp
+                </Link>
+              </Button>
+            </div>
+            <div className="mt-8 pt-8 border-t border-dark-500">
+              <p className="text-sm text-dark-600">
+                Prefer to message? Use WhatsApp for quick responses.
+              </p>
+            </div>
           </div>
         </div>
       </section>
